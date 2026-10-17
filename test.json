@@ -1,0 +1,20 @@
+{
+    "0": {
+        "input": "[]",
+        "accepted": true,
+        "step count": 3,
+        "write complexity": 0,
+        "space complexity": 2,
+        "head position": 0,
+        "comments": ""
+    },
+    "1": {
+        "input": "[3A7F00C29B14E58D]",
+        "accepted": true,
+        "step count": 35,
+        "write complexity": 0,
+        "space complexity": 18,
+        "head position": 0,
+        "comments": ""
+    } 
+}

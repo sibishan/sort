@@ -21,12 +21,29 @@ ERROR = "\u2757"   # ❗ error state
 BLANK = "\u00b7"   # · blank symbol
 RIGHT = "\u2192"   # →
 LEFT = "\u2190"    # ←
-HALT = "\u25a0"    # ■
+HALT = "\u23f9"    # ⏹
 
 LDELIM = ["[", "{", ","]   # symbols that can sit just left of a word's first digit
 
 """
+STATES
+chk: scans right to check whether the list has two or more entries
+fin: walks left back to cell 0 and accepts. It’s only used for lists with zero or one entry
+cmp_seek: walks left to the start of the left word, ready to compare it with the word after ;
+
 !TODO: define states introduced in this program to stay on the same page
 """
 
 m = Machine()
+
+# start, handle empty list & single element list
+m.add(INIT, "[", RIGHT, "chk")
+m.add("chk", H, RIGHT, "chk")
+m.add("chk", "]", LEFT, "fin")
+m.add("chk", ",", LEFT, "cmp_seek", write=";")
+m.add("fin", H, LEFT, "fin")
+m.add("fin", "[", HALT, ACCEPT)
+
+tsv = m.to_tsv()
+with open("sort.tsv", "w", encoding="utf-8", newline="") as f:
+    f.write(tsv)

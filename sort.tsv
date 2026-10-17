@@ -1,0 +1,6 @@
+⎆	[	→		chk
+chk	0 1 2 3 4 5 6 7 8 9 A B C D E F	→		chk
+chk	]	←		fin
+chk	,	←	;	cmp_seek
+fin	0 1 2 3 4 5 6 7 8 9 A B C D E F	←		fin
+fin	[	⏹		✔
