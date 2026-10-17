@@ -6,7 +6,6 @@ Tape alphabet used:
     g-v             marked versions of 0-F  (0->g, 1->h, ..., F->v)
     [ , ]           input punctuation
     ;               cursor: replaces the comma between the pair being compared
-    {               swap flag: replaces '[' at cell 0 when a pass has swapped
 """
 
 HEX = "0123456789ABCDEF"
@@ -23,7 +22,7 @@ RIGHT = "\u2192"   # →
 LEFT = "\u2190"    # ←
 HALT = "\u23f9"    # ⏹
 
-LDELIM = ["[", "{", ","]   # symbols that can sit just left of a word's first digit
+LDELIM = ["[", ","]   # symbols that can sit just left of a word's first digit
 
 """
 STATES
@@ -40,7 +39,7 @@ clrL_IN: unmarks the left word
 tocur_IN: walks back to ';' and restores it to ','
 adv: moves the cursor to the next pair, or ends the check
 ✔ (ACCEPT): the list is in order
-not_sorted: a pair is out of order
+start_swap: initiates the swap operation for an out-of-order pair
 
 !TODO: define states introduced in this program to stay on the same page
 """
@@ -64,7 +63,6 @@ m.add("cmp_back_R", ";", LEFT, "cmp_back_L")
 m.add("cmp_back_L", H, LEFT, "cmp_back_L")
 m.add("cmp_back_L", MK + ["[", ","], RIGHT, "cmp_find")
 # first unmarked digit of the left word
-m.add("cmp_find", MK, RIGHT, "cmp_find")
 m.add("cmp_find", ";", RIGHT, "clrR_IN")
 for d in H:
     m.add("cmp_find", d, RIGHT, f"cmp_carry_{d}", write=MARK[d])
@@ -77,8 +75,21 @@ for d in H:
         elif idx(d) < idx(e):
             m.add(f"cmp_test_{d}", e, RIGHT, "clrR_IN")       # in order
         else:
-            m.add(f"cmp_test_{d}", e, HALT, "not_sorted")     # out of order -> reject
- 
+            m.add(f"cmp_test_{d}", e, RIGHT, "start_swap", write=MARK[e])     # out of order -> swap needed.
+# start_swap: If the pair is out of order, we need to swap them. 
+# Starting by marking the entire left word, then the entire right word.
+for a in H:
+    m.add("start_swap", a, RIGHT, "start_swap", write=MARK[a])
+m.add("start_swap", ["]", ","], LEFT, "start_swap_R")
+# Walking back the whole marked input.
+m.add("start_swap_R", MK, LEFT, "start_swap_R")
+m.add("start_swap_R", ";", LEFT, "start_swap_L") 
+for a in H:
+    m.add("start_swap_L", a, LEFT, "start_swap_L", write=MARK[a]) 
+m.add("start_swap_L", MK , LEFT, "start_swap_L") 
+m.add("start_swap_L", ["[", ","] , RIGHT, "find_swap")  
+# find_swap: Now we are at the left bracket of the pair to swap. We will swap the two marked words.
+
 # unmark the pair: right word first, then left word
 m.add("clrR_IN", H, RIGHT, "clrR_IN")
 for c in MK:
