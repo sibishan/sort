@@ -1,6 +1,16 @@
-# Usage
+# Sort
 
-## 1. Generate the TSV file
+## State Transition Diagram
+
+The generalised state transition diagram for the sorting Turing Machine is shown below.
+
+![Generalised State Transition Diagram](assets/sort_collapsed.png)
+
+For the complete state transition diagram with all transitions shown individually, see the [exact state transition diagram](assets/sort_exact.png).
+
+## Usage
+
+### 1. Generate the TSV file
 
 Run:
 
@@ -10,15 +20,13 @@ python3 sort.py
 
 This generates the TSV file required by the Turing Machine simulator.
 
-## 2. Upload the TSV file
+### 2. Upload the TSV file
 
-Go to the Turing Machine simulator:
-
-https://edstem.org/au/courses/38542/lessons/118243/slides/836183
+Go to the [Turing Machine Simulator](https://edstem.org/au/courses/38542/lessons/118243/slides/836183).
 
 Upload the generated TSV file.
 
-## 3. Enter an input
+### 3. Enter an input
 
 Enter an input such as:
 
@@ -35,7 +43,7 @@ Each element must:
 
 Click **Load Machine**, then click **Run**.
 
-## 4. Record the results
+### 4. Record the results
 
 After the machine finishes running, manually enter the results into `test.json`.
 
