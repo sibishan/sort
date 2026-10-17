@@ -45,8 +45,9 @@ start_swap_R: walks back the whole marked right input
 start_swap_L: walks and marks the left input, stopping at the left delimiter
 swap_middle: walks right to ';', then steps left onto the last left-word cell
 find_swap: picks up the rightmost pending (marked) left cell, or finishes when it reaches the delimiter
-carry_swap_L_a: carries left digit a right to the end of the right word
-carry_swap_R_a: walks left to the rightmost pending right cell, writes a, picks up that cell's digit b
+carry_swap_L_a: carries left digit a right across the left word to ';'
+carry_swap_M_a: skips pending right cells; at the first finished cell or delimiter, steps left once
+carry_swap_R_a: on the rightmost pending right cell, writes a, picks up that cell's digit b
 carry_backswap_R_b: carries b left across the right word to ';'
 carry_backswap_L_b: skips finished left cells, writes b into the pending cell
 swap_done: walks right to ';' and turns it into ':' (a swap happened this pass)
@@ -115,9 +116,10 @@ m.add("swap_middle", ";", LEFT, "find_swap")
 m.add("find_swap", LDELIM, RIGHT, "swap_done")  # if we reach the left delimiter, we are done swapping
 for a in MK:
     m.add("find_swap", a, RIGHT, f"carry_swap_L_{a}")
-    m.add(f"carry_swap_L_{a}", H + MK + [";"], RIGHT, f"carry_swap_L_{a}")
-    m.add(f"carry_swap_L_{a}", ["]", ",", "|"] , LEFT, f"carry_swap_R_{a}")
-    m.add(f"carry_swap_R_{a}", H, LEFT, f"carry_swap_R_{a}")
+    m.add(f"carry_swap_L_{a}", H + MK, RIGHT, f"carry_swap_L_{a}")
+    m.add(f"carry_swap_L_{a}", ";", RIGHT, f"carry_swap_M_{a}")
+    m.add(f"carry_swap_M_{a}", MK, RIGHT, f"carry_swap_M_{a}")
+    m.add(f"carry_swap_M_{a}", H + ["]", ",", "|"], LEFT, f"carry_swap_R_{a}")
     for b in MK:
         m.add(f"carry_swap_R_{a}", b, LEFT, f"carry_backswap_R_{b}", write=UNMARK[a])
     m.add(f"carry_backswap_R_{a}", MK, LEFT, f"carry_backswap_R_{a}")

@@ -4,11 +4,11 @@ chk	]	←		fin
 chk	,	←	;	cmp_back_L
 fin	0 1 2 3 4 5 6 7 8 9 A B C D E F ,	←		fin
 fin	[	⏹		✔
+chk	|	←	,	fin
 cmp_back_R	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	←		cmp_back_R
 cmp_back_R	;	←		cmp_back_L
 cmp_back_L	0 1 2 3 4 5 6 7 8 9 A B C D E F	←		cmp_back_L
-cmp_back_L	g h i j k l m n o p q r s t u v [ ,	→		cmp_find
-cmp_find	g h i j k l m n o p q r s t u v	→		cmp_find
+cmp_back_L	g h i j k l m n o p q r s t u v [ , :	→		cmp_find
 cmp_find	;	→		clrR_IN
 cmp_find	0	→	g	cmp_carry_0
 cmp_carry_0	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		cmp_carry_0
@@ -20,106 +20,653 @@ cmp_find	1	→	h	cmp_carry_1
 cmp_carry_1	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		cmp_carry_1
 cmp_carry_1	;	→		cmp_test_1
 cmp_test_1	g h i j k l m n o p q r s t u v	→		cmp_test_1
-cmp_test_1	0	⏹		not_sorted
+cmp_test_1	0	→	g	start_swap
 cmp_test_1	1	←	h	cmp_back_R
 cmp_test_1	2 3 4 5 6 7 8 9 A B C D E F	→		clrR_IN
 cmp_find	2	→	i	cmp_carry_2
 cmp_carry_2	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		cmp_carry_2
 cmp_carry_2	;	→		cmp_test_2
 cmp_test_2	g h i j k l m n o p q r s t u v	→		cmp_test_2
-cmp_test_2	0 1	⏹		not_sorted
+cmp_test_2	0	→	g	start_swap
+cmp_test_2	1	→	h	start_swap
 cmp_test_2	2	←	i	cmp_back_R
 cmp_test_2	3 4 5 6 7 8 9 A B C D E F	→		clrR_IN
 cmp_find	3	→	j	cmp_carry_3
 cmp_carry_3	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		cmp_carry_3
 cmp_carry_3	;	→		cmp_test_3
 cmp_test_3	g h i j k l m n o p q r s t u v	→		cmp_test_3
-cmp_test_3	0 1 2	⏹		not_sorted
+cmp_test_3	0	→	g	start_swap
+cmp_test_3	1	→	h	start_swap
+cmp_test_3	2	→	i	start_swap
 cmp_test_3	3	←	j	cmp_back_R
 cmp_test_3	4 5 6 7 8 9 A B C D E F	→		clrR_IN
 cmp_find	4	→	k	cmp_carry_4
 cmp_carry_4	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		cmp_carry_4
 cmp_carry_4	;	→		cmp_test_4
 cmp_test_4	g h i j k l m n o p q r s t u v	→		cmp_test_4
-cmp_test_4	0 1 2 3	⏹		not_sorted
+cmp_test_4	0	→	g	start_swap
+cmp_test_4	1	→	h	start_swap
+cmp_test_4	2	→	i	start_swap
+cmp_test_4	3	→	j	start_swap
 cmp_test_4	4	←	k	cmp_back_R
 cmp_test_4	5 6 7 8 9 A B C D E F	→		clrR_IN
 cmp_find	5	→	l	cmp_carry_5
 cmp_carry_5	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		cmp_carry_5
 cmp_carry_5	;	→		cmp_test_5
 cmp_test_5	g h i j k l m n o p q r s t u v	→		cmp_test_5
-cmp_test_5	0 1 2 3 4	⏹		not_sorted
+cmp_test_5	0	→	g	start_swap
+cmp_test_5	1	→	h	start_swap
+cmp_test_5	2	→	i	start_swap
+cmp_test_5	3	→	j	start_swap
+cmp_test_5	4	→	k	start_swap
 cmp_test_5	5	←	l	cmp_back_R
 cmp_test_5	6 7 8 9 A B C D E F	→		clrR_IN
 cmp_find	6	→	m	cmp_carry_6
 cmp_carry_6	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		cmp_carry_6
 cmp_carry_6	;	→		cmp_test_6
 cmp_test_6	g h i j k l m n o p q r s t u v	→		cmp_test_6
-cmp_test_6	0 1 2 3 4 5	⏹		not_sorted
+cmp_test_6	0	→	g	start_swap
+cmp_test_6	1	→	h	start_swap
+cmp_test_6	2	→	i	start_swap
+cmp_test_6	3	→	j	start_swap
+cmp_test_6	4	→	k	start_swap
+cmp_test_6	5	→	l	start_swap
 cmp_test_6	6	←	m	cmp_back_R
 cmp_test_6	7 8 9 A B C D E F	→		clrR_IN
 cmp_find	7	→	n	cmp_carry_7
 cmp_carry_7	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		cmp_carry_7
 cmp_carry_7	;	→		cmp_test_7
 cmp_test_7	g h i j k l m n o p q r s t u v	→		cmp_test_7
-cmp_test_7	0 1 2 3 4 5 6	⏹		not_sorted
+cmp_test_7	0	→	g	start_swap
+cmp_test_7	1	→	h	start_swap
+cmp_test_7	2	→	i	start_swap
+cmp_test_7	3	→	j	start_swap
+cmp_test_7	4	→	k	start_swap
+cmp_test_7	5	→	l	start_swap
+cmp_test_7	6	→	m	start_swap
 cmp_test_7	7	←	n	cmp_back_R
 cmp_test_7	8 9 A B C D E F	→		clrR_IN
 cmp_find	8	→	o	cmp_carry_8
 cmp_carry_8	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		cmp_carry_8
 cmp_carry_8	;	→		cmp_test_8
 cmp_test_8	g h i j k l m n o p q r s t u v	→		cmp_test_8
-cmp_test_8	0 1 2 3 4 5 6 7	⏹		not_sorted
+cmp_test_8	0	→	g	start_swap
+cmp_test_8	1	→	h	start_swap
+cmp_test_8	2	→	i	start_swap
+cmp_test_8	3	→	j	start_swap
+cmp_test_8	4	→	k	start_swap
+cmp_test_8	5	→	l	start_swap
+cmp_test_8	6	→	m	start_swap
+cmp_test_8	7	→	n	start_swap
 cmp_test_8	8	←	o	cmp_back_R
 cmp_test_8	9 A B C D E F	→		clrR_IN
 cmp_find	9	→	p	cmp_carry_9
 cmp_carry_9	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		cmp_carry_9
 cmp_carry_9	;	→		cmp_test_9
 cmp_test_9	g h i j k l m n o p q r s t u v	→		cmp_test_9
-cmp_test_9	0 1 2 3 4 5 6 7 8	⏹		not_sorted
+cmp_test_9	0	→	g	start_swap
+cmp_test_9	1	→	h	start_swap
+cmp_test_9	2	→	i	start_swap
+cmp_test_9	3	→	j	start_swap
+cmp_test_9	4	→	k	start_swap
+cmp_test_9	5	→	l	start_swap
+cmp_test_9	6	→	m	start_swap
+cmp_test_9	7	→	n	start_swap
+cmp_test_9	8	→	o	start_swap
 cmp_test_9	9	←	p	cmp_back_R
 cmp_test_9	A B C D E F	→		clrR_IN
 cmp_find	A	→	q	cmp_carry_A
 cmp_carry_A	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		cmp_carry_A
 cmp_carry_A	;	→		cmp_test_A
 cmp_test_A	g h i j k l m n o p q r s t u v	→		cmp_test_A
-cmp_test_A	0 1 2 3 4 5 6 7 8 9	⏹		not_sorted
+cmp_test_A	0	→	g	start_swap
+cmp_test_A	1	→	h	start_swap
+cmp_test_A	2	→	i	start_swap
+cmp_test_A	3	→	j	start_swap
+cmp_test_A	4	→	k	start_swap
+cmp_test_A	5	→	l	start_swap
+cmp_test_A	6	→	m	start_swap
+cmp_test_A	7	→	n	start_swap
+cmp_test_A	8	→	o	start_swap
+cmp_test_A	9	→	p	start_swap
 cmp_test_A	A	←	q	cmp_back_R
 cmp_test_A	B C D E F	→		clrR_IN
 cmp_find	B	→	r	cmp_carry_B
 cmp_carry_B	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		cmp_carry_B
 cmp_carry_B	;	→		cmp_test_B
 cmp_test_B	g h i j k l m n o p q r s t u v	→		cmp_test_B
-cmp_test_B	0 1 2 3 4 5 6 7 8 9 A	⏹		not_sorted
+cmp_test_B	0	→	g	start_swap
+cmp_test_B	1	→	h	start_swap
+cmp_test_B	2	→	i	start_swap
+cmp_test_B	3	→	j	start_swap
+cmp_test_B	4	→	k	start_swap
+cmp_test_B	5	→	l	start_swap
+cmp_test_B	6	→	m	start_swap
+cmp_test_B	7	→	n	start_swap
+cmp_test_B	8	→	o	start_swap
+cmp_test_B	9	→	p	start_swap
+cmp_test_B	A	→	q	start_swap
 cmp_test_B	B	←	r	cmp_back_R
 cmp_test_B	C D E F	→		clrR_IN
 cmp_find	C	→	s	cmp_carry_C
 cmp_carry_C	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		cmp_carry_C
 cmp_carry_C	;	→		cmp_test_C
 cmp_test_C	g h i j k l m n o p q r s t u v	→		cmp_test_C
-cmp_test_C	0 1 2 3 4 5 6 7 8 9 A B	⏹		not_sorted
+cmp_test_C	0	→	g	start_swap
+cmp_test_C	1	→	h	start_swap
+cmp_test_C	2	→	i	start_swap
+cmp_test_C	3	→	j	start_swap
+cmp_test_C	4	→	k	start_swap
+cmp_test_C	5	→	l	start_swap
+cmp_test_C	6	→	m	start_swap
+cmp_test_C	7	→	n	start_swap
+cmp_test_C	8	→	o	start_swap
+cmp_test_C	9	→	p	start_swap
+cmp_test_C	A	→	q	start_swap
+cmp_test_C	B	→	r	start_swap
 cmp_test_C	C	←	s	cmp_back_R
 cmp_test_C	D E F	→		clrR_IN
 cmp_find	D	→	t	cmp_carry_D
 cmp_carry_D	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		cmp_carry_D
 cmp_carry_D	;	→		cmp_test_D
 cmp_test_D	g h i j k l m n o p q r s t u v	→		cmp_test_D
-cmp_test_D	0 1 2 3 4 5 6 7 8 9 A B C	⏹		not_sorted
+cmp_test_D	0	→	g	start_swap
+cmp_test_D	1	→	h	start_swap
+cmp_test_D	2	→	i	start_swap
+cmp_test_D	3	→	j	start_swap
+cmp_test_D	4	→	k	start_swap
+cmp_test_D	5	→	l	start_swap
+cmp_test_D	6	→	m	start_swap
+cmp_test_D	7	→	n	start_swap
+cmp_test_D	8	→	o	start_swap
+cmp_test_D	9	→	p	start_swap
+cmp_test_D	A	→	q	start_swap
+cmp_test_D	B	→	r	start_swap
+cmp_test_D	C	→	s	start_swap
 cmp_test_D	D	←	t	cmp_back_R
 cmp_test_D	E F	→		clrR_IN
 cmp_find	E	→	u	cmp_carry_E
 cmp_carry_E	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		cmp_carry_E
 cmp_carry_E	;	→		cmp_test_E
 cmp_test_E	g h i j k l m n o p q r s t u v	→		cmp_test_E
-cmp_test_E	0 1 2 3 4 5 6 7 8 9 A B C D	⏹		not_sorted
+cmp_test_E	0	→	g	start_swap
+cmp_test_E	1	→	h	start_swap
+cmp_test_E	2	→	i	start_swap
+cmp_test_E	3	→	j	start_swap
+cmp_test_E	4	→	k	start_swap
+cmp_test_E	5	→	l	start_swap
+cmp_test_E	6	→	m	start_swap
+cmp_test_E	7	→	n	start_swap
+cmp_test_E	8	→	o	start_swap
+cmp_test_E	9	→	p	start_swap
+cmp_test_E	A	→	q	start_swap
+cmp_test_E	B	→	r	start_swap
+cmp_test_E	C	→	s	start_swap
+cmp_test_E	D	→	t	start_swap
 cmp_test_E	E	←	u	cmp_back_R
 cmp_test_E	F	→		clrR_IN
 cmp_find	F	→	v	cmp_carry_F
 cmp_carry_F	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		cmp_carry_F
 cmp_carry_F	;	→		cmp_test_F
 cmp_test_F	g h i j k l m n o p q r s t u v	→		cmp_test_F
-cmp_test_F	0 1 2 3 4 5 6 7 8 9 A B C D E	⏹		not_sorted
+cmp_test_F	0	→	g	start_swap
+cmp_test_F	1	→	h	start_swap
+cmp_test_F	2	→	i	start_swap
+cmp_test_F	3	→	j	start_swap
+cmp_test_F	4	→	k	start_swap
+cmp_test_F	5	→	l	start_swap
+cmp_test_F	6	→	m	start_swap
+cmp_test_F	7	→	n	start_swap
+cmp_test_F	8	→	o	start_swap
+cmp_test_F	9	→	p	start_swap
+cmp_test_F	A	→	q	start_swap
+cmp_test_F	B	→	r	start_swap
+cmp_test_F	C	→	s	start_swap
+cmp_test_F	D	→	t	start_swap
+cmp_test_F	E	→	u	start_swap
 cmp_test_F	F	←	v	cmp_back_R
+start_swap	0	→	g	start_swap
+start_swap	1	→	h	start_swap
+start_swap	2	→	i	start_swap
+start_swap	3	→	j	start_swap
+start_swap	4	→	k	start_swap
+start_swap	5	→	l	start_swap
+start_swap	6	→	m	start_swap
+start_swap	7	→	n	start_swap
+start_swap	8	→	o	start_swap
+start_swap	9	→	p	start_swap
+start_swap	A	→	q	start_swap
+start_swap	B	→	r	start_swap
+start_swap	C	→	s	start_swap
+start_swap	D	→	t	start_swap
+start_swap	E	→	u	start_swap
+start_swap	F	→	v	start_swap
+start_swap	] , |	←		start_swap_R
+start_swap_R	g h i j k l m n o p q r s t u v	←		start_swap_R
+start_swap_R	;	←		start_swap_L
+start_swap_L	0	←	g	start_swap_L
+start_swap_L	1	←	h	start_swap_L
+start_swap_L	2	←	i	start_swap_L
+start_swap_L	3	←	j	start_swap_L
+start_swap_L	4	←	k	start_swap_L
+start_swap_L	5	←	l	start_swap_L
+start_swap_L	6	←	m	start_swap_L
+start_swap_L	7	←	n	start_swap_L
+start_swap_L	8	←	o	start_swap_L
+start_swap_L	9	←	p	start_swap_L
+start_swap_L	A	←	q	start_swap_L
+start_swap_L	B	←	r	start_swap_L
+start_swap_L	C	←	s	start_swap_L
+start_swap_L	D	←	t	start_swap_L
+start_swap_L	E	←	u	start_swap_L
+start_swap_L	F	←	v	start_swap_L
+start_swap_L	g h i j k l m n o p q r s t u v	←		start_swap_L
+start_swap_L	[ , :	→		swap_middle
+swap_middle	g h i j k l m n o p q r s t u v	→		swap_middle
+swap_middle	;	←		find_swap
+find_swap	[ , :	→		swap_done
+find_swap	g	→		carry_swap_L_g
+carry_swap_L_g	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		carry_swap_L_g
+carry_swap_L_g	;	→		carry_swap_M_g
+carry_swap_M_g	g h i j k l m n o p q r s t u v	→		carry_swap_M_g
+carry_swap_M_g	0 1 2 3 4 5 6 7 8 9 A B C D E F ] , |	←		carry_swap_R_g
+carry_swap_R_g	g	←	0	carry_backswap_R_g
+carry_swap_R_g	h	←	0	carry_backswap_R_h
+carry_swap_R_g	i	←	0	carry_backswap_R_i
+carry_swap_R_g	j	←	0	carry_backswap_R_j
+carry_swap_R_g	k	←	0	carry_backswap_R_k
+carry_swap_R_g	l	←	0	carry_backswap_R_l
+carry_swap_R_g	m	←	0	carry_backswap_R_m
+carry_swap_R_g	n	←	0	carry_backswap_R_n
+carry_swap_R_g	o	←	0	carry_backswap_R_o
+carry_swap_R_g	p	←	0	carry_backswap_R_p
+carry_swap_R_g	q	←	0	carry_backswap_R_q
+carry_swap_R_g	r	←	0	carry_backswap_R_r
+carry_swap_R_g	s	←	0	carry_backswap_R_s
+carry_swap_R_g	t	←	0	carry_backswap_R_t
+carry_swap_R_g	u	←	0	carry_backswap_R_u
+carry_swap_R_g	v	←	0	carry_backswap_R_v
+carry_backswap_R_g	g h i j k l m n o p q r s t u v	←		carry_backswap_R_g
+carry_backswap_R_g	;	←		carry_backswap_L_g
+carry_backswap_L_g	0 1 2 3 4 5 6 7 8 9 A B C D E F	←		carry_backswap_L_g
+carry_backswap_L_g	g h i j k l m n o p q r s t u v	←	0	find_swap
+find_swap	h	→		carry_swap_L_h
+carry_swap_L_h	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		carry_swap_L_h
+carry_swap_L_h	;	→		carry_swap_M_h
+carry_swap_M_h	g h i j k l m n o p q r s t u v	→		carry_swap_M_h
+carry_swap_M_h	0 1 2 3 4 5 6 7 8 9 A B C D E F ] , |	←		carry_swap_R_h
+carry_swap_R_h	g	←	1	carry_backswap_R_g
+carry_swap_R_h	h	←	1	carry_backswap_R_h
+carry_swap_R_h	i	←	1	carry_backswap_R_i
+carry_swap_R_h	j	←	1	carry_backswap_R_j
+carry_swap_R_h	k	←	1	carry_backswap_R_k
+carry_swap_R_h	l	←	1	carry_backswap_R_l
+carry_swap_R_h	m	←	1	carry_backswap_R_m
+carry_swap_R_h	n	←	1	carry_backswap_R_n
+carry_swap_R_h	o	←	1	carry_backswap_R_o
+carry_swap_R_h	p	←	1	carry_backswap_R_p
+carry_swap_R_h	q	←	1	carry_backswap_R_q
+carry_swap_R_h	r	←	1	carry_backswap_R_r
+carry_swap_R_h	s	←	1	carry_backswap_R_s
+carry_swap_R_h	t	←	1	carry_backswap_R_t
+carry_swap_R_h	u	←	1	carry_backswap_R_u
+carry_swap_R_h	v	←	1	carry_backswap_R_v
+carry_backswap_R_h	g h i j k l m n o p q r s t u v	←		carry_backswap_R_h
+carry_backswap_R_h	;	←		carry_backswap_L_h
+carry_backswap_L_h	0 1 2 3 4 5 6 7 8 9 A B C D E F	←		carry_backswap_L_h
+carry_backswap_L_h	g h i j k l m n o p q r s t u v	←	1	find_swap
+find_swap	i	→		carry_swap_L_i
+carry_swap_L_i	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		carry_swap_L_i
+carry_swap_L_i	;	→		carry_swap_M_i
+carry_swap_M_i	g h i j k l m n o p q r s t u v	→		carry_swap_M_i
+carry_swap_M_i	0 1 2 3 4 5 6 7 8 9 A B C D E F ] , |	←		carry_swap_R_i
+carry_swap_R_i	g	←	2	carry_backswap_R_g
+carry_swap_R_i	h	←	2	carry_backswap_R_h
+carry_swap_R_i	i	←	2	carry_backswap_R_i
+carry_swap_R_i	j	←	2	carry_backswap_R_j
+carry_swap_R_i	k	←	2	carry_backswap_R_k
+carry_swap_R_i	l	←	2	carry_backswap_R_l
+carry_swap_R_i	m	←	2	carry_backswap_R_m
+carry_swap_R_i	n	←	2	carry_backswap_R_n
+carry_swap_R_i	o	←	2	carry_backswap_R_o
+carry_swap_R_i	p	←	2	carry_backswap_R_p
+carry_swap_R_i	q	←	2	carry_backswap_R_q
+carry_swap_R_i	r	←	2	carry_backswap_R_r
+carry_swap_R_i	s	←	2	carry_backswap_R_s
+carry_swap_R_i	t	←	2	carry_backswap_R_t
+carry_swap_R_i	u	←	2	carry_backswap_R_u
+carry_swap_R_i	v	←	2	carry_backswap_R_v
+carry_backswap_R_i	g h i j k l m n o p q r s t u v	←		carry_backswap_R_i
+carry_backswap_R_i	;	←		carry_backswap_L_i
+carry_backswap_L_i	0 1 2 3 4 5 6 7 8 9 A B C D E F	←		carry_backswap_L_i
+carry_backswap_L_i	g h i j k l m n o p q r s t u v	←	2	find_swap
+find_swap	j	→		carry_swap_L_j
+carry_swap_L_j	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		carry_swap_L_j
+carry_swap_L_j	;	→		carry_swap_M_j
+carry_swap_M_j	g h i j k l m n o p q r s t u v	→		carry_swap_M_j
+carry_swap_M_j	0 1 2 3 4 5 6 7 8 9 A B C D E F ] , |	←		carry_swap_R_j
+carry_swap_R_j	g	←	3	carry_backswap_R_g
+carry_swap_R_j	h	←	3	carry_backswap_R_h
+carry_swap_R_j	i	←	3	carry_backswap_R_i
+carry_swap_R_j	j	←	3	carry_backswap_R_j
+carry_swap_R_j	k	←	3	carry_backswap_R_k
+carry_swap_R_j	l	←	3	carry_backswap_R_l
+carry_swap_R_j	m	←	3	carry_backswap_R_m
+carry_swap_R_j	n	←	3	carry_backswap_R_n
+carry_swap_R_j	o	←	3	carry_backswap_R_o
+carry_swap_R_j	p	←	3	carry_backswap_R_p
+carry_swap_R_j	q	←	3	carry_backswap_R_q
+carry_swap_R_j	r	←	3	carry_backswap_R_r
+carry_swap_R_j	s	←	3	carry_backswap_R_s
+carry_swap_R_j	t	←	3	carry_backswap_R_t
+carry_swap_R_j	u	←	3	carry_backswap_R_u
+carry_swap_R_j	v	←	3	carry_backswap_R_v
+carry_backswap_R_j	g h i j k l m n o p q r s t u v	←		carry_backswap_R_j
+carry_backswap_R_j	;	←		carry_backswap_L_j
+carry_backswap_L_j	0 1 2 3 4 5 6 7 8 9 A B C D E F	←		carry_backswap_L_j
+carry_backswap_L_j	g h i j k l m n o p q r s t u v	←	3	find_swap
+find_swap	k	→		carry_swap_L_k
+carry_swap_L_k	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		carry_swap_L_k
+carry_swap_L_k	;	→		carry_swap_M_k
+carry_swap_M_k	g h i j k l m n o p q r s t u v	→		carry_swap_M_k
+carry_swap_M_k	0 1 2 3 4 5 6 7 8 9 A B C D E F ] , |	←		carry_swap_R_k
+carry_swap_R_k	g	←	4	carry_backswap_R_g
+carry_swap_R_k	h	←	4	carry_backswap_R_h
+carry_swap_R_k	i	←	4	carry_backswap_R_i
+carry_swap_R_k	j	←	4	carry_backswap_R_j
+carry_swap_R_k	k	←	4	carry_backswap_R_k
+carry_swap_R_k	l	←	4	carry_backswap_R_l
+carry_swap_R_k	m	←	4	carry_backswap_R_m
+carry_swap_R_k	n	←	4	carry_backswap_R_n
+carry_swap_R_k	o	←	4	carry_backswap_R_o
+carry_swap_R_k	p	←	4	carry_backswap_R_p
+carry_swap_R_k	q	←	4	carry_backswap_R_q
+carry_swap_R_k	r	←	4	carry_backswap_R_r
+carry_swap_R_k	s	←	4	carry_backswap_R_s
+carry_swap_R_k	t	←	4	carry_backswap_R_t
+carry_swap_R_k	u	←	4	carry_backswap_R_u
+carry_swap_R_k	v	←	4	carry_backswap_R_v
+carry_backswap_R_k	g h i j k l m n o p q r s t u v	←		carry_backswap_R_k
+carry_backswap_R_k	;	←		carry_backswap_L_k
+carry_backswap_L_k	0 1 2 3 4 5 6 7 8 9 A B C D E F	←		carry_backswap_L_k
+carry_backswap_L_k	g h i j k l m n o p q r s t u v	←	4	find_swap
+find_swap	l	→		carry_swap_L_l
+carry_swap_L_l	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		carry_swap_L_l
+carry_swap_L_l	;	→		carry_swap_M_l
+carry_swap_M_l	g h i j k l m n o p q r s t u v	→		carry_swap_M_l
+carry_swap_M_l	0 1 2 3 4 5 6 7 8 9 A B C D E F ] , |	←		carry_swap_R_l
+carry_swap_R_l	g	←	5	carry_backswap_R_g
+carry_swap_R_l	h	←	5	carry_backswap_R_h
+carry_swap_R_l	i	←	5	carry_backswap_R_i
+carry_swap_R_l	j	←	5	carry_backswap_R_j
+carry_swap_R_l	k	←	5	carry_backswap_R_k
+carry_swap_R_l	l	←	5	carry_backswap_R_l
+carry_swap_R_l	m	←	5	carry_backswap_R_m
+carry_swap_R_l	n	←	5	carry_backswap_R_n
+carry_swap_R_l	o	←	5	carry_backswap_R_o
+carry_swap_R_l	p	←	5	carry_backswap_R_p
+carry_swap_R_l	q	←	5	carry_backswap_R_q
+carry_swap_R_l	r	←	5	carry_backswap_R_r
+carry_swap_R_l	s	←	5	carry_backswap_R_s
+carry_swap_R_l	t	←	5	carry_backswap_R_t
+carry_swap_R_l	u	←	5	carry_backswap_R_u
+carry_swap_R_l	v	←	5	carry_backswap_R_v
+carry_backswap_R_l	g h i j k l m n o p q r s t u v	←		carry_backswap_R_l
+carry_backswap_R_l	;	←		carry_backswap_L_l
+carry_backswap_L_l	0 1 2 3 4 5 6 7 8 9 A B C D E F	←		carry_backswap_L_l
+carry_backswap_L_l	g h i j k l m n o p q r s t u v	←	5	find_swap
+find_swap	m	→		carry_swap_L_m
+carry_swap_L_m	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		carry_swap_L_m
+carry_swap_L_m	;	→		carry_swap_M_m
+carry_swap_M_m	g h i j k l m n o p q r s t u v	→		carry_swap_M_m
+carry_swap_M_m	0 1 2 3 4 5 6 7 8 9 A B C D E F ] , |	←		carry_swap_R_m
+carry_swap_R_m	g	←	6	carry_backswap_R_g
+carry_swap_R_m	h	←	6	carry_backswap_R_h
+carry_swap_R_m	i	←	6	carry_backswap_R_i
+carry_swap_R_m	j	←	6	carry_backswap_R_j
+carry_swap_R_m	k	←	6	carry_backswap_R_k
+carry_swap_R_m	l	←	6	carry_backswap_R_l
+carry_swap_R_m	m	←	6	carry_backswap_R_m
+carry_swap_R_m	n	←	6	carry_backswap_R_n
+carry_swap_R_m	o	←	6	carry_backswap_R_o
+carry_swap_R_m	p	←	6	carry_backswap_R_p
+carry_swap_R_m	q	←	6	carry_backswap_R_q
+carry_swap_R_m	r	←	6	carry_backswap_R_r
+carry_swap_R_m	s	←	6	carry_backswap_R_s
+carry_swap_R_m	t	←	6	carry_backswap_R_t
+carry_swap_R_m	u	←	6	carry_backswap_R_u
+carry_swap_R_m	v	←	6	carry_backswap_R_v
+carry_backswap_R_m	g h i j k l m n o p q r s t u v	←		carry_backswap_R_m
+carry_backswap_R_m	;	←		carry_backswap_L_m
+carry_backswap_L_m	0 1 2 3 4 5 6 7 8 9 A B C D E F	←		carry_backswap_L_m
+carry_backswap_L_m	g h i j k l m n o p q r s t u v	←	6	find_swap
+find_swap	n	→		carry_swap_L_n
+carry_swap_L_n	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		carry_swap_L_n
+carry_swap_L_n	;	→		carry_swap_M_n
+carry_swap_M_n	g h i j k l m n o p q r s t u v	→		carry_swap_M_n
+carry_swap_M_n	0 1 2 3 4 5 6 7 8 9 A B C D E F ] , |	←		carry_swap_R_n
+carry_swap_R_n	g	←	7	carry_backswap_R_g
+carry_swap_R_n	h	←	7	carry_backswap_R_h
+carry_swap_R_n	i	←	7	carry_backswap_R_i
+carry_swap_R_n	j	←	7	carry_backswap_R_j
+carry_swap_R_n	k	←	7	carry_backswap_R_k
+carry_swap_R_n	l	←	7	carry_backswap_R_l
+carry_swap_R_n	m	←	7	carry_backswap_R_m
+carry_swap_R_n	n	←	7	carry_backswap_R_n
+carry_swap_R_n	o	←	7	carry_backswap_R_o
+carry_swap_R_n	p	←	7	carry_backswap_R_p
+carry_swap_R_n	q	←	7	carry_backswap_R_q
+carry_swap_R_n	r	←	7	carry_backswap_R_r
+carry_swap_R_n	s	←	7	carry_backswap_R_s
+carry_swap_R_n	t	←	7	carry_backswap_R_t
+carry_swap_R_n	u	←	7	carry_backswap_R_u
+carry_swap_R_n	v	←	7	carry_backswap_R_v
+carry_backswap_R_n	g h i j k l m n o p q r s t u v	←		carry_backswap_R_n
+carry_backswap_R_n	;	←		carry_backswap_L_n
+carry_backswap_L_n	0 1 2 3 4 5 6 7 8 9 A B C D E F	←		carry_backswap_L_n
+carry_backswap_L_n	g h i j k l m n o p q r s t u v	←	7	find_swap
+find_swap	o	→		carry_swap_L_o
+carry_swap_L_o	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		carry_swap_L_o
+carry_swap_L_o	;	→		carry_swap_M_o
+carry_swap_M_o	g h i j k l m n o p q r s t u v	→		carry_swap_M_o
+carry_swap_M_o	0 1 2 3 4 5 6 7 8 9 A B C D E F ] , |	←		carry_swap_R_o
+carry_swap_R_o	g	←	8	carry_backswap_R_g
+carry_swap_R_o	h	←	8	carry_backswap_R_h
+carry_swap_R_o	i	←	8	carry_backswap_R_i
+carry_swap_R_o	j	←	8	carry_backswap_R_j
+carry_swap_R_o	k	←	8	carry_backswap_R_k
+carry_swap_R_o	l	←	8	carry_backswap_R_l
+carry_swap_R_o	m	←	8	carry_backswap_R_m
+carry_swap_R_o	n	←	8	carry_backswap_R_n
+carry_swap_R_o	o	←	8	carry_backswap_R_o
+carry_swap_R_o	p	←	8	carry_backswap_R_p
+carry_swap_R_o	q	←	8	carry_backswap_R_q
+carry_swap_R_o	r	←	8	carry_backswap_R_r
+carry_swap_R_o	s	←	8	carry_backswap_R_s
+carry_swap_R_o	t	←	8	carry_backswap_R_t
+carry_swap_R_o	u	←	8	carry_backswap_R_u
+carry_swap_R_o	v	←	8	carry_backswap_R_v
+carry_backswap_R_o	g h i j k l m n o p q r s t u v	←		carry_backswap_R_o
+carry_backswap_R_o	;	←		carry_backswap_L_o
+carry_backswap_L_o	0 1 2 3 4 5 6 7 8 9 A B C D E F	←		carry_backswap_L_o
+carry_backswap_L_o	g h i j k l m n o p q r s t u v	←	8	find_swap
+find_swap	p	→		carry_swap_L_p
+carry_swap_L_p	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		carry_swap_L_p
+carry_swap_L_p	;	→		carry_swap_M_p
+carry_swap_M_p	g h i j k l m n o p q r s t u v	→		carry_swap_M_p
+carry_swap_M_p	0 1 2 3 4 5 6 7 8 9 A B C D E F ] , |	←		carry_swap_R_p
+carry_swap_R_p	g	←	9	carry_backswap_R_g
+carry_swap_R_p	h	←	9	carry_backswap_R_h
+carry_swap_R_p	i	←	9	carry_backswap_R_i
+carry_swap_R_p	j	←	9	carry_backswap_R_j
+carry_swap_R_p	k	←	9	carry_backswap_R_k
+carry_swap_R_p	l	←	9	carry_backswap_R_l
+carry_swap_R_p	m	←	9	carry_backswap_R_m
+carry_swap_R_p	n	←	9	carry_backswap_R_n
+carry_swap_R_p	o	←	9	carry_backswap_R_o
+carry_swap_R_p	p	←	9	carry_backswap_R_p
+carry_swap_R_p	q	←	9	carry_backswap_R_q
+carry_swap_R_p	r	←	9	carry_backswap_R_r
+carry_swap_R_p	s	←	9	carry_backswap_R_s
+carry_swap_R_p	t	←	9	carry_backswap_R_t
+carry_swap_R_p	u	←	9	carry_backswap_R_u
+carry_swap_R_p	v	←	9	carry_backswap_R_v
+carry_backswap_R_p	g h i j k l m n o p q r s t u v	←		carry_backswap_R_p
+carry_backswap_R_p	;	←		carry_backswap_L_p
+carry_backswap_L_p	0 1 2 3 4 5 6 7 8 9 A B C D E F	←		carry_backswap_L_p
+carry_backswap_L_p	g h i j k l m n o p q r s t u v	←	9	find_swap
+find_swap	q	→		carry_swap_L_q
+carry_swap_L_q	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		carry_swap_L_q
+carry_swap_L_q	;	→		carry_swap_M_q
+carry_swap_M_q	g h i j k l m n o p q r s t u v	→		carry_swap_M_q
+carry_swap_M_q	0 1 2 3 4 5 6 7 8 9 A B C D E F ] , |	←		carry_swap_R_q
+carry_swap_R_q	g	←	A	carry_backswap_R_g
+carry_swap_R_q	h	←	A	carry_backswap_R_h
+carry_swap_R_q	i	←	A	carry_backswap_R_i
+carry_swap_R_q	j	←	A	carry_backswap_R_j
+carry_swap_R_q	k	←	A	carry_backswap_R_k
+carry_swap_R_q	l	←	A	carry_backswap_R_l
+carry_swap_R_q	m	←	A	carry_backswap_R_m
+carry_swap_R_q	n	←	A	carry_backswap_R_n
+carry_swap_R_q	o	←	A	carry_backswap_R_o
+carry_swap_R_q	p	←	A	carry_backswap_R_p
+carry_swap_R_q	q	←	A	carry_backswap_R_q
+carry_swap_R_q	r	←	A	carry_backswap_R_r
+carry_swap_R_q	s	←	A	carry_backswap_R_s
+carry_swap_R_q	t	←	A	carry_backswap_R_t
+carry_swap_R_q	u	←	A	carry_backswap_R_u
+carry_swap_R_q	v	←	A	carry_backswap_R_v
+carry_backswap_R_q	g h i j k l m n o p q r s t u v	←		carry_backswap_R_q
+carry_backswap_R_q	;	←		carry_backswap_L_q
+carry_backswap_L_q	0 1 2 3 4 5 6 7 8 9 A B C D E F	←		carry_backswap_L_q
+carry_backswap_L_q	g h i j k l m n o p q r s t u v	←	A	find_swap
+find_swap	r	→		carry_swap_L_r
+carry_swap_L_r	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		carry_swap_L_r
+carry_swap_L_r	;	→		carry_swap_M_r
+carry_swap_M_r	g h i j k l m n o p q r s t u v	→		carry_swap_M_r
+carry_swap_M_r	0 1 2 3 4 5 6 7 8 9 A B C D E F ] , |	←		carry_swap_R_r
+carry_swap_R_r	g	←	B	carry_backswap_R_g
+carry_swap_R_r	h	←	B	carry_backswap_R_h
+carry_swap_R_r	i	←	B	carry_backswap_R_i
+carry_swap_R_r	j	←	B	carry_backswap_R_j
+carry_swap_R_r	k	←	B	carry_backswap_R_k
+carry_swap_R_r	l	←	B	carry_backswap_R_l
+carry_swap_R_r	m	←	B	carry_backswap_R_m
+carry_swap_R_r	n	←	B	carry_backswap_R_n
+carry_swap_R_r	o	←	B	carry_backswap_R_o
+carry_swap_R_r	p	←	B	carry_backswap_R_p
+carry_swap_R_r	q	←	B	carry_backswap_R_q
+carry_swap_R_r	r	←	B	carry_backswap_R_r
+carry_swap_R_r	s	←	B	carry_backswap_R_s
+carry_swap_R_r	t	←	B	carry_backswap_R_t
+carry_swap_R_r	u	←	B	carry_backswap_R_u
+carry_swap_R_r	v	←	B	carry_backswap_R_v
+carry_backswap_R_r	g h i j k l m n o p q r s t u v	←		carry_backswap_R_r
+carry_backswap_R_r	;	←		carry_backswap_L_r
+carry_backswap_L_r	0 1 2 3 4 5 6 7 8 9 A B C D E F	←		carry_backswap_L_r
+carry_backswap_L_r	g h i j k l m n o p q r s t u v	←	B	find_swap
+find_swap	s	→		carry_swap_L_s
+carry_swap_L_s	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		carry_swap_L_s
+carry_swap_L_s	;	→		carry_swap_M_s
+carry_swap_M_s	g h i j k l m n o p q r s t u v	→		carry_swap_M_s
+carry_swap_M_s	0 1 2 3 4 5 6 7 8 9 A B C D E F ] , |	←		carry_swap_R_s
+carry_swap_R_s	g	←	C	carry_backswap_R_g
+carry_swap_R_s	h	←	C	carry_backswap_R_h
+carry_swap_R_s	i	←	C	carry_backswap_R_i
+carry_swap_R_s	j	←	C	carry_backswap_R_j
+carry_swap_R_s	k	←	C	carry_backswap_R_k
+carry_swap_R_s	l	←	C	carry_backswap_R_l
+carry_swap_R_s	m	←	C	carry_backswap_R_m
+carry_swap_R_s	n	←	C	carry_backswap_R_n
+carry_swap_R_s	o	←	C	carry_backswap_R_o
+carry_swap_R_s	p	←	C	carry_backswap_R_p
+carry_swap_R_s	q	←	C	carry_backswap_R_q
+carry_swap_R_s	r	←	C	carry_backswap_R_r
+carry_swap_R_s	s	←	C	carry_backswap_R_s
+carry_swap_R_s	t	←	C	carry_backswap_R_t
+carry_swap_R_s	u	←	C	carry_backswap_R_u
+carry_swap_R_s	v	←	C	carry_backswap_R_v
+carry_backswap_R_s	g h i j k l m n o p q r s t u v	←		carry_backswap_R_s
+carry_backswap_R_s	;	←		carry_backswap_L_s
+carry_backswap_L_s	0 1 2 3 4 5 6 7 8 9 A B C D E F	←		carry_backswap_L_s
+carry_backswap_L_s	g h i j k l m n o p q r s t u v	←	C	find_swap
+find_swap	t	→		carry_swap_L_t
+carry_swap_L_t	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		carry_swap_L_t
+carry_swap_L_t	;	→		carry_swap_M_t
+carry_swap_M_t	g h i j k l m n o p q r s t u v	→		carry_swap_M_t
+carry_swap_M_t	0 1 2 3 4 5 6 7 8 9 A B C D E F ] , |	←		carry_swap_R_t
+carry_swap_R_t	g	←	D	carry_backswap_R_g
+carry_swap_R_t	h	←	D	carry_backswap_R_h
+carry_swap_R_t	i	←	D	carry_backswap_R_i
+carry_swap_R_t	j	←	D	carry_backswap_R_j
+carry_swap_R_t	k	←	D	carry_backswap_R_k
+carry_swap_R_t	l	←	D	carry_backswap_R_l
+carry_swap_R_t	m	←	D	carry_backswap_R_m
+carry_swap_R_t	n	←	D	carry_backswap_R_n
+carry_swap_R_t	o	←	D	carry_backswap_R_o
+carry_swap_R_t	p	←	D	carry_backswap_R_p
+carry_swap_R_t	q	←	D	carry_backswap_R_q
+carry_swap_R_t	r	←	D	carry_backswap_R_r
+carry_swap_R_t	s	←	D	carry_backswap_R_s
+carry_swap_R_t	t	←	D	carry_backswap_R_t
+carry_swap_R_t	u	←	D	carry_backswap_R_u
+carry_swap_R_t	v	←	D	carry_backswap_R_v
+carry_backswap_R_t	g h i j k l m n o p q r s t u v	←		carry_backswap_R_t
+carry_backswap_R_t	;	←		carry_backswap_L_t
+carry_backswap_L_t	0 1 2 3 4 5 6 7 8 9 A B C D E F	←		carry_backswap_L_t
+carry_backswap_L_t	g h i j k l m n o p q r s t u v	←	D	find_swap
+find_swap	u	→		carry_swap_L_u
+carry_swap_L_u	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		carry_swap_L_u
+carry_swap_L_u	;	→		carry_swap_M_u
+carry_swap_M_u	g h i j k l m n o p q r s t u v	→		carry_swap_M_u
+carry_swap_M_u	0 1 2 3 4 5 6 7 8 9 A B C D E F ] , |	←		carry_swap_R_u
+carry_swap_R_u	g	←	E	carry_backswap_R_g
+carry_swap_R_u	h	←	E	carry_backswap_R_h
+carry_swap_R_u	i	←	E	carry_backswap_R_i
+carry_swap_R_u	j	←	E	carry_backswap_R_j
+carry_swap_R_u	k	←	E	carry_backswap_R_k
+carry_swap_R_u	l	←	E	carry_backswap_R_l
+carry_swap_R_u	m	←	E	carry_backswap_R_m
+carry_swap_R_u	n	←	E	carry_backswap_R_n
+carry_swap_R_u	o	←	E	carry_backswap_R_o
+carry_swap_R_u	p	←	E	carry_backswap_R_p
+carry_swap_R_u	q	←	E	carry_backswap_R_q
+carry_swap_R_u	r	←	E	carry_backswap_R_r
+carry_swap_R_u	s	←	E	carry_backswap_R_s
+carry_swap_R_u	t	←	E	carry_backswap_R_t
+carry_swap_R_u	u	←	E	carry_backswap_R_u
+carry_swap_R_u	v	←	E	carry_backswap_R_v
+carry_backswap_R_u	g h i j k l m n o p q r s t u v	←		carry_backswap_R_u
+carry_backswap_R_u	;	←		carry_backswap_L_u
+carry_backswap_L_u	0 1 2 3 4 5 6 7 8 9 A B C D E F	←		carry_backswap_L_u
+carry_backswap_L_u	g h i j k l m n o p q r s t u v	←	E	find_swap
+find_swap	v	→		carry_swap_L_v
+carry_swap_L_v	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		carry_swap_L_v
+carry_swap_L_v	;	→		carry_swap_M_v
+carry_swap_M_v	g h i j k l m n o p q r s t u v	→		carry_swap_M_v
+carry_swap_M_v	0 1 2 3 4 5 6 7 8 9 A B C D E F ] , |	←		carry_swap_R_v
+carry_swap_R_v	g	←	F	carry_backswap_R_g
+carry_swap_R_v	h	←	F	carry_backswap_R_h
+carry_swap_R_v	i	←	F	carry_backswap_R_i
+carry_swap_R_v	j	←	F	carry_backswap_R_j
+carry_swap_R_v	k	←	F	carry_backswap_R_k
+carry_swap_R_v	l	←	F	carry_backswap_R_l
+carry_swap_R_v	m	←	F	carry_backswap_R_m
+carry_swap_R_v	n	←	F	carry_backswap_R_n
+carry_swap_R_v	o	←	F	carry_backswap_R_o
+carry_swap_R_v	p	←	F	carry_backswap_R_p
+carry_swap_R_v	q	←	F	carry_backswap_R_q
+carry_swap_R_v	r	←	F	carry_backswap_R_r
+carry_swap_R_v	s	←	F	carry_backswap_R_s
+carry_swap_R_v	t	←	F	carry_backswap_R_t
+carry_swap_R_v	u	←	F	carry_backswap_R_u
+carry_swap_R_v	v	←	F	carry_backswap_R_v
+carry_backswap_R_v	g h i j k l m n o p q r s t u v	←		carry_backswap_R_v
+carry_backswap_R_v	;	←		carry_backswap_L_v
+carry_backswap_L_v	0 1 2 3 4 5 6 7 8 9 A B C D E F	←		carry_backswap_L_v
+carry_backswap_L_v	g h i j k l m n o p q r s t u v	←	F	find_swap
+swap_done	0 1 2 3 4 5 6 7 8 9 A B C D E F	→		swap_done
+swap_done	;	→	:	adv
 clrR_IN	0 1 2 3 4 5 6 7 8 9 A B C D E F	→		clrR_IN
 clrR_IN	g	→	0	clrR_IN
 clrR_IN	h	→	1	clrR_IN
@@ -137,7 +684,7 @@ clrR_IN	s	→	C	clrR_IN
 clrR_IN	t	→	D	clrR_IN
 clrR_IN	u	→	E	clrR_IN
 clrR_IN	v	→	F	clrR_IN
-clrR_IN	, ]	←		clrL_IN
+clrR_IN	, ] |	←		clrL_IN
 clrL_IN	0 1 2 3 4 5 6 7 8 9 A B C D E F ;	←		clrL_IN
 clrL_IN	g	←	0	clrL_IN
 clrL_IN	h	←	1	clrL_IN
@@ -155,9 +702,21 @@ clrL_IN	s	←	C	clrL_IN
 clrL_IN	t	←	D	clrL_IN
 clrL_IN	u	←	E	clrL_IN
 clrL_IN	v	←	F	clrL_IN
-clrL_IN	[ ,	→		tocur_IN
+clrL_IN	[ , :	→		tocur_IN
 tocur_IN	0 1 2 3 4 5 6 7 8 9 A B C D E F	→		tocur_IN
 tocur_IN	;	→	,	adv
 adv	0 1 2 3 4 5 6 7 8 9 A B C D E F	→		adv
 adv	,	←	;	cmp_back_L
-adv	]	←		fin
+adv	]	←		shrink
+adv	|	←	,	shrink
+shrink	0 1 2 3 4 5 6 7 8 9 A B C D E F	←		shrink
+shrink	:	←	|	return_start
+shrink	,	←	|	check_sorted
+check_sorted	0 1 2 3 4 5 6 7 8 9 A B C D E F ,	←		check_sorted
+check_sorted	:	←	,	return_start
+check_sorted	[	→		restore
+restore	0 1 2 3 4 5 6 7 8 9 A B C D E F ,	→		restore
+restore	|	←	,	fin
+return_start	0 1 2 3 4 5 6 7 8 9 A B C D E F , |	←		return_start
+return_start	:	←	,	return_start
+return_start	[	→		chk
