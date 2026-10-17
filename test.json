@@ -20,7 +20,7 @@
     "2": {
             "input": "[3A7F00C29B14E58D,3A7F00C29B14E58E,F000000000000000]",
             "accepted": true,
-            "step count": 1057,
+            "step count": 817,
             "write complexity": 68,
             "space complexity": 52,
             "head position": 0,
@@ -29,10 +29,10 @@
     "3": {
             "input": "[3A7F00C29B14E58E,3A7F00C29B14E58D,F000000000000000]",
             "accepted": false,
-            "step count": 818,
+            "step count": 578,
             "write complexity": 32,
             "space complexity": 52,
-            "head position": 0,
+            "head position": 33,
             "comments": "machine doesn't have swapping feat, CHECK again after implementing swapping and update this test case"
     }
 }
