@@ -2,5 +2,160 @@
 chk	0 1 2 3 4 5 6 7 8 9 A B C D E F	→		chk
 chk	]	←		fin
 chk	,	←	;	cmp_seek
-fin	0 1 2 3 4 5 6 7 8 9 A B C D E F	←		fin
+fin	0 1 2 3 4 5 6 7 8 9 A B C D E F ,	←		fin
 fin	[	⏹		✔
+cmp_seek	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v ;	←		cmp_seek
+cmp_seek	[ { ,	→		cmp_find
+cmp_find	g h i j k l m n o p q r s t u v	→		cmp_find
+cmp_find	;	→		clrR_IN
+cmp_find	0	→	g	cmp_carry_0
+cmp_carry_0	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		cmp_carry_0
+cmp_carry_0	;	→		cmp_test_0
+cmp_test_0	g h i j k l m n o p q r s t u v	→		cmp_test_0
+cmp_test_0	0	←	g	cmp_seek
+cmp_test_0	1 2 3 4 5 6 7 8 9 A B C D E F	→		clrR_IN
+cmp_find	1	→	h	cmp_carry_1
+cmp_carry_1	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		cmp_carry_1
+cmp_carry_1	;	→		cmp_test_1
+cmp_test_1	g h i j k l m n o p q r s t u v	→		cmp_test_1
+cmp_test_1	0	⏹		not_sorted
+cmp_test_1	1	←	h	cmp_seek
+cmp_test_1	2 3 4 5 6 7 8 9 A B C D E F	→		clrR_IN
+cmp_find	2	→	i	cmp_carry_2
+cmp_carry_2	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		cmp_carry_2
+cmp_carry_2	;	→		cmp_test_2
+cmp_test_2	g h i j k l m n o p q r s t u v	→		cmp_test_2
+cmp_test_2	0 1	⏹		not_sorted
+cmp_test_2	2	←	i	cmp_seek
+cmp_test_2	3 4 5 6 7 8 9 A B C D E F	→		clrR_IN
+cmp_find	3	→	j	cmp_carry_3
+cmp_carry_3	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		cmp_carry_3
+cmp_carry_3	;	→		cmp_test_3
+cmp_test_3	g h i j k l m n o p q r s t u v	→		cmp_test_3
+cmp_test_3	0 1 2	⏹		not_sorted
+cmp_test_3	3	←	j	cmp_seek
+cmp_test_3	4 5 6 7 8 9 A B C D E F	→		clrR_IN
+cmp_find	4	→	k	cmp_carry_4
+cmp_carry_4	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		cmp_carry_4
+cmp_carry_4	;	→		cmp_test_4
+cmp_test_4	g h i j k l m n o p q r s t u v	→		cmp_test_4
+cmp_test_4	0 1 2 3	⏹		not_sorted
+cmp_test_4	4	←	k	cmp_seek
+cmp_test_4	5 6 7 8 9 A B C D E F	→		clrR_IN
+cmp_find	5	→	l	cmp_carry_5
+cmp_carry_5	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		cmp_carry_5
+cmp_carry_5	;	→		cmp_test_5
+cmp_test_5	g h i j k l m n o p q r s t u v	→		cmp_test_5
+cmp_test_5	0 1 2 3 4	⏹		not_sorted
+cmp_test_5	5	←	l	cmp_seek
+cmp_test_5	6 7 8 9 A B C D E F	→		clrR_IN
+cmp_find	6	→	m	cmp_carry_6
+cmp_carry_6	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		cmp_carry_6
+cmp_carry_6	;	→		cmp_test_6
+cmp_test_6	g h i j k l m n o p q r s t u v	→		cmp_test_6
+cmp_test_6	0 1 2 3 4 5	⏹		not_sorted
+cmp_test_6	6	←	m	cmp_seek
+cmp_test_6	7 8 9 A B C D E F	→		clrR_IN
+cmp_find	7	→	n	cmp_carry_7
+cmp_carry_7	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		cmp_carry_7
+cmp_carry_7	;	→		cmp_test_7
+cmp_test_7	g h i j k l m n o p q r s t u v	→		cmp_test_7
+cmp_test_7	0 1 2 3 4 5 6	⏹		not_sorted
+cmp_test_7	7	←	n	cmp_seek
+cmp_test_7	8 9 A B C D E F	→		clrR_IN
+cmp_find	8	→	o	cmp_carry_8
+cmp_carry_8	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		cmp_carry_8
+cmp_carry_8	;	→		cmp_test_8
+cmp_test_8	g h i j k l m n o p q r s t u v	→		cmp_test_8
+cmp_test_8	0 1 2 3 4 5 6 7	⏹		not_sorted
+cmp_test_8	8	←	o	cmp_seek
+cmp_test_8	9 A B C D E F	→		clrR_IN
+cmp_find	9	→	p	cmp_carry_9
+cmp_carry_9	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		cmp_carry_9
+cmp_carry_9	;	→		cmp_test_9
+cmp_test_9	g h i j k l m n o p q r s t u v	→		cmp_test_9
+cmp_test_9	0 1 2 3 4 5 6 7 8	⏹		not_sorted
+cmp_test_9	9	←	p	cmp_seek
+cmp_test_9	A B C D E F	→		clrR_IN
+cmp_find	A	→	q	cmp_carry_A
+cmp_carry_A	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		cmp_carry_A
+cmp_carry_A	;	→		cmp_test_A
+cmp_test_A	g h i j k l m n o p q r s t u v	→		cmp_test_A
+cmp_test_A	0 1 2 3 4 5 6 7 8 9	⏹		not_sorted
+cmp_test_A	A	←	q	cmp_seek
+cmp_test_A	B C D E F	→		clrR_IN
+cmp_find	B	→	r	cmp_carry_B
+cmp_carry_B	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		cmp_carry_B
+cmp_carry_B	;	→		cmp_test_B
+cmp_test_B	g h i j k l m n o p q r s t u v	→		cmp_test_B
+cmp_test_B	0 1 2 3 4 5 6 7 8 9 A	⏹		not_sorted
+cmp_test_B	B	←	r	cmp_seek
+cmp_test_B	C D E F	→		clrR_IN
+cmp_find	C	→	s	cmp_carry_C
+cmp_carry_C	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		cmp_carry_C
+cmp_carry_C	;	→		cmp_test_C
+cmp_test_C	g h i j k l m n o p q r s t u v	→		cmp_test_C
+cmp_test_C	0 1 2 3 4 5 6 7 8 9 A B	⏹		not_sorted
+cmp_test_C	C	←	s	cmp_seek
+cmp_test_C	D E F	→		clrR_IN
+cmp_find	D	→	t	cmp_carry_D
+cmp_carry_D	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		cmp_carry_D
+cmp_carry_D	;	→		cmp_test_D
+cmp_test_D	g h i j k l m n o p q r s t u v	→		cmp_test_D
+cmp_test_D	0 1 2 3 4 5 6 7 8 9 A B C	⏹		not_sorted
+cmp_test_D	D	←	t	cmp_seek
+cmp_test_D	E F	→		clrR_IN
+cmp_find	E	→	u	cmp_carry_E
+cmp_carry_E	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		cmp_carry_E
+cmp_carry_E	;	→		cmp_test_E
+cmp_test_E	g h i j k l m n o p q r s t u v	→		cmp_test_E
+cmp_test_E	0 1 2 3 4 5 6 7 8 9 A B C D	⏹		not_sorted
+cmp_test_E	E	←	u	cmp_seek
+cmp_test_E	F	→		clrR_IN
+cmp_find	F	→	v	cmp_carry_F
+cmp_carry_F	0 1 2 3 4 5 6 7 8 9 A B C D E F g h i j k l m n o p q r s t u v	→		cmp_carry_F
+cmp_carry_F	;	→		cmp_test_F
+cmp_test_F	g h i j k l m n o p q r s t u v	→		cmp_test_F
+cmp_test_F	0 1 2 3 4 5 6 7 8 9 A B C D E	⏹		not_sorted
+cmp_test_F	F	←	v	cmp_seek
+clrR_IN	0 1 2 3 4 5 6 7 8 9 A B C D E F	→		clrR_IN
+clrR_IN	g	→	0	clrR_IN
+clrR_IN	h	→	1	clrR_IN
+clrR_IN	i	→	2	clrR_IN
+clrR_IN	j	→	3	clrR_IN
+clrR_IN	k	→	4	clrR_IN
+clrR_IN	l	→	5	clrR_IN
+clrR_IN	m	→	6	clrR_IN
+clrR_IN	n	→	7	clrR_IN
+clrR_IN	o	→	8	clrR_IN
+clrR_IN	p	→	9	clrR_IN
+clrR_IN	q	→	A	clrR_IN
+clrR_IN	r	→	B	clrR_IN
+clrR_IN	s	→	C	clrR_IN
+clrR_IN	t	→	D	clrR_IN
+clrR_IN	u	→	E	clrR_IN
+clrR_IN	v	→	F	clrR_IN
+clrR_IN	, ]	←		clrL_IN
+clrL_IN	0 1 2 3 4 5 6 7 8 9 A B C D E F ;	←		clrL_IN
+clrL_IN	g	←	0	clrL_IN
+clrL_IN	h	←	1	clrL_IN
+clrL_IN	i	←	2	clrL_IN
+clrL_IN	j	←	3	clrL_IN
+clrL_IN	k	←	4	clrL_IN
+clrL_IN	l	←	5	clrL_IN
+clrL_IN	m	←	6	clrL_IN
+clrL_IN	n	←	7	clrL_IN
+clrL_IN	o	←	8	clrL_IN
+clrL_IN	p	←	9	clrL_IN
+clrL_IN	q	←	A	clrL_IN
+clrL_IN	r	←	B	clrL_IN
+clrL_IN	s	←	C	clrL_IN
+clrL_IN	t	←	D	clrL_IN
+clrL_IN	u	←	E	clrL_IN
+clrL_IN	v	←	F	clrL_IN
+clrL_IN	[ ,	→		tocur_IN
+tocur_IN	0 1 2 3 4 5 6 7 8 9 A B C D E F	→		tocur_IN
+tocur_IN	;	→	,	adv
+adv	0 1 2 3 4 5 6 7 8 9 A B C D E F	→		adv
+adv	,	←	;	cmp_seek
+adv	]	←		fin
