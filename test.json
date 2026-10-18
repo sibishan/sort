@@ -34,5 +34,14 @@
         "space complexity": 52,
         "head position": 0,
         "comments": "most steps are spent to compare the first two words, which are equal except for the last digit"
+    },
+    "4": {
+        "input": "[012398B9DC1120F8,7FF172B039BB7010,606AE9BBA68586BF,257C8D6796DD6C86,03BAA037352B11F0]",
+        "accepted": true,
+        "step count": 5225,
+        "write complexity": 427,
+        "space complexity": 86,
+        "head position": 0,
+        "comments": ""
     }
 }

@@ -1,4 +1,4 @@
-"""Headless Turing machine runner; requires only the Python standard library."""
+"""Headless Turing machine sim; requires only the Python standard library."""
 
 from .simulator import Machine, MachineError, RunResult
 from .symbols import iter_normalized_characters

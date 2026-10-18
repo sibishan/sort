@@ -7,7 +7,7 @@ import sys
 
 if __name__ == "__main__" and not __package__:
     sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-    from runner.cli import main
+    from sim.cli import main
 
     raise SystemExit(main())
 

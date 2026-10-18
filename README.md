@@ -20,18 +20,14 @@ python3 sort.py
 
 This generates the TSV file required by the Turing Machine simulator.
 
-### 2. Upload the TSV file
+### 2. Add test cases
 
-Go to the [Turing Machine Simulator](https://edstem.org/au/courses/38542/lessons/118243/slides/836183).
+Test cases are listed at the bottom of `test.py` as `run_case(input, comments)` calls:
 
-Upload the generated TSV file.
-
-### 3. Enter an input
-
-Enter an input such as:
-
-```text
-[3A7F00C29B14E58D,3A7F00C29B14E58E,F000000000000000]
+```python
+run_case("[]", "edge case: empty list")
+run_case("[3A7F00C29B14E58D,3A7F00C29B14E58E,F000000000000000]", "nearly equal first two words")
+run_case(random_input(5))  # 5 random elements; changes every run
 ```
 
 The input can contain any number of elements.
@@ -41,24 +37,39 @@ Each element must:
 - Be exactly 16 characters long.
 - Contain only hexadecimal characters `0-9` and `A-F`.
 
-Click **Load Machine**, then click **Run**.
+### 3. Run the tests
 
-### 4. Record the results
+Run `test.py` from the project root (or use your editor's Run button):
 
-After the machine finishes running, manually enter the results into `test.json`.
+```bash
+python3 test.py
+```
 
-Use the following format:
+Each test case runs on the bundled simulator in `sim/`, reading `sort.tsv`. Re-run `sort.py` first if the machine has changed.
+
+For each case, the output shows PASS if the machine accepted the input and the final tape holds the sorted list, and FAIL otherwise:
+
+```text
+PASS #2: accepted, 885 steps, 70 writes, 52 cells, head 0
+```
+
+### 4. Results
+
+`test.json` is rebuilt on every run from the `run_case` calls, numbered in the order they appear in `test.py`:
 
 ```json
 "2": {
     "input": "[3A7F00C29B14E58D,3A7F00C29B14E58E,F000000000000000]",
     "accepted": true,
-    "step count": 817,
-    "write complexity": 68,
+    "step count": 885,
+    "write complexity": 70,
     "space complexity": 52,
     "head position": 0,
-    "comments": ""
+    "comments": "nearly equal first two words"
 },
 ```
 
-Here, `"2"` is the test case number. Increment the test case number for each new test.
+- **write complexity**: the number of steps that changed a cell's symbol.
+- **space complexity**: the number of tape cells used (the input length, or more if the head moves past the end of the input).
+
+The simulator does not report these two values, so `test.py` counts them while stepping through the machine. They match the values shown by the [Ed Turing Machine Simulator](https://edstem.org/au/courses/38542/lessons/118243/slides/836183), which can still be used to step through a run visually.

@@ -1,4 +1,4 @@
-# Runner usage guide
+# Runner (aka sim) usage guide
 
 Run a Turing machine from a TSV file and inspect its final tape, state, and
 execution count. The runner can execute one input, run several inputs against

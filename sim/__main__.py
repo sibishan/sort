@@ -3,7 +3,7 @@ if not __package__:
     from pathlib import Path
 
     sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-    from runner.cli import main
+    from sim.cli import main
 else:
     from .cli import main
 
