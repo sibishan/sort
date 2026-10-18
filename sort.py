@@ -12,7 +12,7 @@ Tape alphabet used:
 
 HEX = "0123456789ABCDEF"
 MARK = dict(zip(HEX, "ghijklmnopqrstuv"))      # unmarked -> marked
-UNMARK = {v: k for k, v in MARK.items()}         # marked   -> unmarked
+UNMARK = {v: k for k, v in MARK.items()}       # marked   -> unmarked
 H = list(HEX)
 MK = list(MARK.values())
 
@@ -56,7 +56,6 @@ check_sorted: no swap at the last boundary; scans left for any remaining ':'
 restore: no swap this pass, so sorted; walks right and turns '|' back into ','
 return_start: swap happened; walks left to '[' clearing every ':' back to ',', then restarts the pass
 ✔ (ACCEPT): the list is in order
-
 """
 
 m = Machine()
@@ -89,11 +88,11 @@ for d in H:
     m.add(f"cmp_test_{d}", MK, RIGHT, f"cmp_test_{d}")
     for e in H:
         if d == e:
-            m.add(f"cmp_test_{d}", e, LEFT, "cmp_back_R", write=MARK[e])  # equal -> next digit
+            m.add(f"cmp_test_{d}", e, LEFT, "cmp_back_R", write=MARK[e])    # equal -> next digit
         elif idx(d) < idx(e):
-            m.add(f"cmp_test_{d}", e, RIGHT, "clrR_IN")       # in order
+            m.add(f"cmp_test_{d}", e, RIGHT, "clrR_IN")                     # in order
         else:
-            m.add(f"cmp_test_{d}", e, RIGHT, "start_swap", write=MARK[e])     # out of order -> swap needed.
+            m.add(f"cmp_test_{d}", e, RIGHT, "start_swap", write=MARK[e])   # out of order -> swap needed.
 # start_swap: If the pair is out of order, we need to swap them. 
 
 # Starting by marking the entire left word, then the entire right word.
@@ -146,22 +145,23 @@ m.add("clrL_IN", LDELIM, RIGHT, "tocur_IN")
 m.add("tocur_IN", H, RIGHT, "tocur_IN")
 m.add("tocur_IN", ";", RIGHT, "adv", write=",")
 m.add("adv", H, RIGHT, "adv")
-m.add("adv", ",", LEFT, "cmp_back_L", write=";")   # next pair
-m.add("adv", "]", LEFT, "shrink")                       # no pairs left, the pass is done, shrink the input by 1.
-m.add("adv", "|", LEFT, "shrink", write=",")            # no pairs left, the pass is done, shrink the input by 1.
+m.add("adv", ",", LEFT, "cmp_back_L", write=";")                # next pair
+m.add("adv", "]", LEFT, "shrink")                               # no pairs left, the pass is done, shrink the input by 1.
+m.add("adv", "|", LEFT, "shrink", write=",")                    # no pairs left, the pass is done, shrink the input by 1.
 m.add("shrink", H, LEFT, "shrink")
 m.add("shrink", ":", LEFT, "return_start", write="|")
 m.add("shrink", ",", LEFT, "check_sorted", write="|")
 m.add("check_sorted", H + [","], LEFT, "check_sorted")
-m.add("check_sorted", ":", LEFT, "return_start", write=",")  # if we see a swap flag, the list is not sorted yet
+m.add("check_sorted", ":", LEFT, "return_start", write=",")     # if we see a swap flag, the list is not sorted yet
 
-m.add("check_sorted", "[", RIGHT, "restore") # the list is sorted, restore the input and accept
+m.add("check_sorted", "[", RIGHT, "restore")                    # the list is sorted, restore the input and accept
 m.add("restore", H + [","], RIGHT, "restore")
 m.add("restore", "|", LEFT, "fin", write=",")
 
 m.add("return_start", H + [",", "|"], LEFT, "return_start")
-m.add("return_start", ":", LEFT, "return_start", write=",")  # clear the swap flag
+m.add("return_start", ":", LEFT, "return_start", write=",")     # clear the swap flag
 m.add("return_start", "[", RIGHT, "chk")
+
 tsv = m.to_tsv()
 with open("sort.tsv", "w", encoding="utf-8", newline="") as f:
     f.write(tsv)

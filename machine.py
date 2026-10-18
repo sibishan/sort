@@ -8,7 +8,7 @@ Tape alphabet used:
 
 HEX = "0123456789ABCDEF"
 MARK = dict(zip(HEX, "ghijklmnopqrstuv"))      # unmarked -> marked
-UNMARK = {v: k for k, v in MARK.items()}         # marked   -> unmarked
+UNMARK = {v: k for k, v in MARK.items()}       # marked   -> unmarked
 H = list(HEX)
 MK = list(MARK.values())
 
