@@ -101,24 +101,16 @@ def run_case(text, comments=""):
 
 run_case("[]", "edge case: empty list")
 run_case("[3A7F00C29B14E58D]", "edge case: only 1 element in the list")
-run_case("[3A7F00C29B14E58D,3A7F00C29B14E58E,F000000000000000]",
-         "most steps are spent to compare the first two words, which are equal except for the last digit")
-run_case("[3A7F00C29B14E58E,3A7F00C29B14E58D,F000000000000000]",
-         "most steps are spent to compare the first two words, which are equal except for the last digit")
-run_case(random_input(5))
-
-run_case("[]", "edge case: empty list")
-run_case("[3A7F00C29B14E58D]", "edge case: only 1 element in the list")
 run_case("[0000000000000000]", "edge case: single all-zero word")
 run_case("[FFFFFFFFFFFFFFFF]", "edge case: single all-F word")
  
-# --- Two elements -----------------------------------------------------------
+# --- two elements -----------------------------------------------------------
 run_case("[0000000000000001,0000000000000002]", "two words, already sorted")
 run_case("[0000000000000002,0000000000000001]", "two words, swapped")
 run_case("[FFFFFFFFFFFFFFFF,0000000000000000]", "two words, extreme values swapped")
 run_case("[3A7F00C29B14E58D,3A7F00C29B14E58D]", "two identical words")
  
-# --- Step-count stress: long common prefixes --------------------------------
+# --- step-count stress: long common prefixes --------------------------------
 run_case("[3A7F00C29B14E58D,3A7F00C29B14E58E,F000000000000000]",
          "most steps are spent to compare the first two words, which are equal except for the last digit")
 run_case("[3A7F00C29B14E58E,3A7F00C29B14E58D,F000000000000000]",
@@ -128,7 +120,7 @@ run_case("[F000000000000000,3A7F00C29B14E58E,3A7F00C29B14E58D]",
 run_case("[3A7F00C29B14E58D,F000000000000000,3A7F00C29B14E58E]",
          "long common prefix between non-adjacent words")
  
-# --- Words differing in exactly one position --------------------------------
+# --- words differing in exactly one position --------------------------------
 run_case("[8000000000000000,0000000000000000]", "differ only in the first digit")
 run_case("[0000000000000009,000000000000000A]", "last digit crosses the 9/A digit-letter boundary")
 run_case("[000000000000000A,0000000000000009]", "last digit crosses the 9/A boundary, swapped")
@@ -139,7 +131,7 @@ run_case("[0123456789ABCDED,0123456789ABCDEE,0123456789ABCDEF]",
 run_case("[1000000000000000,0F00000000000000]",
          "first digit decides even though later digits favor the other word")
  
-# --- Duplicates -------------------------------------------------------------
+# --- duplicates -------------------------------------------------------------
 run_case("[AAAAAAAAAAAAAAAA,AAAAAAAAAAAAAAAA,AAAAAAAAAAAAAAAA,AAAAAAAAAAAAAAAA]",
          "all words identical")
 run_case("[2000000000000000,1000000000000000,2000000000000000,1000000000000000]",
@@ -147,19 +139,21 @@ run_case("[2000000000000000,1000000000000000,2000000000000000,1000000000000000]"
 run_case("[BBBBBBBBBBBBBBBB,0000000000000000,BBBBBBBBBBBBBBBB,0000000000000000,BBBBBBBBBBBBBBBB]",
          "duplicates with a single minimum value repeated")
  
-# --- Already sorted / reverse sorted ---------------------------------------
+# --- already sorted --------------------------------------------------------
 run_case("[0000000000000000,1111111111111111,2222222222222222,3333333333333333,"
          "4444444444444444,5555555555555555,6666666666666666,7777777777777777]",
          "eight words, already sorted")
+run_case("[0000000000000000,0000000000000001,0000000000000002,0000000000000003]",
+         "consecutive values, already sorted")
+
+# --- reverse sorted --------------------------------------------------------
 run_case("[7777777777777777,6666666666666666,5555555555555555,4444444444444444,"
          "3333333333333333,2222222222222222,1111111111111111,0000000000000000]",
          "eight words, reverse sorted")
-run_case("[0000000000000000,0000000000000001,0000000000000002,0000000000000003]",
-         "consecutive values, already sorted")
 run_case("[0000000000000003,0000000000000002,0000000000000001,0000000000000000]",
          "consecutive values, reverse sorted")
  
-# --- Realistic / mixed ------------------------------------------------------
+# --- mixed ------------------------------------------------------------------
 run_case("[00000000DEADBEEF,00000000CAFEBABE,0000000000C0FFEE,0000000000000000]",
          "common hex constants with leading zeros")
 run_case("[FEDCBA9876543210,0123456789ABCDEF,FFFFFFFFFFFFFFFF,0000000000000000]",
@@ -167,7 +161,7 @@ run_case("[FEDCBA9876543210,0123456789ABCDEF,FFFFFFFFFFFFFFFF,0000000000000000]"
 run_case("[9999999999999999,AAAAAAAAAAAAAAAA,9999999999999998,AAAAAAAAAAAAAAA9]",
          "words straddling the digit-letter boundary")
  
-# --- Pseudo-random (fixed seed) ---------------------------------------------
+# --- random  ----------------------------------------------------------------
 run_case(random_input(2))
 run_case(random_input(3))
 run_case(random_input(5))
