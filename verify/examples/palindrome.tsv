@@ -1,0 +1,18 @@
+⎆	a	→	·	seek-a
+⎆	b	→	·	seek-b
+⎆	·	⏹		✔
+pick	a	→	·	seek-a
+pick	b	→	·	seek-b
+pick	·	⏹		✔
+seek-a	a b	→		seek-a
+seek-a	·	←		check-a
+seek-b	a b	→		seek-b
+seek-b	·	←		check-b
+check-a	a	←	·	back
+check-a	·	⏹		✔
+check-a	b	⏹		mismatch
+check-b	b	←	·	back
+check-b	·	⏹		✔
+check-b	a	⏹		mismatch
+back	a b	←		back
+back	·	→		pick

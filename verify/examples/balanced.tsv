@@ -1,0 +1,13 @@
+⎆	(	→	[	find-close
+⎆	)	⏹		unmatched-close
+⎆	·	⏹		✔
+find-close	( x	→		find-close
+find-close	)	←	x	find-open
+find-close	·	←		check
+find-open	x	←		find-open
+find-open	(	→	x	find-close
+find-open	[	→	|	find-close
+find-open	|	⏹		unmatched-close
+check	x	←		check
+check	( [	⏹		unmatched-open
+check	|	⏹		✔

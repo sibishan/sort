@@ -1,0 +1,18 @@
+⎆	a	→	A	find-b
+⎆	b c	⏹		out-of-order
+⎆	·	⏹		✔
+find-b	a B	→		find-b
+find-b	b	→	B	find-c
+find-b	c C ·	⏹		missing-b
+find-c	b C	→		find-c
+find-c	c	←	C	back
+find-c	a B ·	⏹		missing-c
+back	a b c B C	←		back
+back	A	→		next
+next	a	→	A	find-b
+next	B	→		verify
+verify	B C	→		verify
+verify	·	⏹		✔
+verify	a	⏹		out-of-order
+verify	b	⏹		excess-b
+verify	c	⏹		excess-c
