@@ -18,7 +18,7 @@ ERROR = "\u2757"   # ❗ error state
 BLANK = "\u00b7"   # · blank symbol
 RIGHT = "\u2192"   # →
 LEFT = "\u2190"    # ←
-HALT = "\u25a0"    # ■
+HALT = "\u23f9"    # ⏹
 
 LDELIM = ["[", ","]   # symbols that can sit just left of a word's first digit
 
