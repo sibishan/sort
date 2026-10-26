@@ -6,8 +6,6 @@ The generalised state transition diagram for the sorting Turing Machine is shown
 
 ![Generalised State Transition Diagram](assets/sort_collapsed.png)
 
-For the complete state transition diagram with all transitions shown individually, see the [exact state transition diagram](assets/sort_exact.png).
-
 ## Usage
 
 ### 1. Generate the TSV file
