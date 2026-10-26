@@ -1,10 +1,17 @@
-# Sort
+# Bubble-Sort Turing Machine
+
+Group Members:
+- Duc Anh Tran (25090085)
+- Finley Ellis (24786853)
+- Sibishan Ravindran (14543324) 
+- Tuan Duy Nguyen (26099578)
+
 
 ## State Transition Diagram
 
 The generalised state transition diagram for the sorting Turing Machine is shown below.
 
-![Generalised State Transition Diagram](assets/sort_collapsed.png)
+![Generalised State Transition Diagram](assets/sort_machine_diagram.png)
 
 ## Usage
 
