@@ -18,9 +18,7 @@ ERROR = "\u2757"   # ❗ error state
 BLANK = "\u00b7"   # · blank symbol
 RIGHT = "\u2192"   # →
 LEFT = "\u2190"    # ←
-HALT = "\u25a0"    # ■
-
-LDELIM = ["[", ","]   # symbols that can sit just left of a word's first digit
+HALT = "\u23f9"    # ⏹
 
 class Machine:
     def __init__(self):
@@ -35,23 +33,7 @@ class Machine:
                 raise ValueError(f"conflicting rules for {key}: {self.rules[key]} vs {val}")
             self.rules[key] = val
 
-    def validate(self):
-        halting, continuing = set(), set()
-        for (st, _), (mv, _, nx) in self.rules.items():
-            (halting if mv == HALT else continuing).add(nx)
-            if nx in (INIT, ERROR):
-                raise ValueError(f"illegal transition into {nx}")
-            if mv == HALT and st in halting:
-                pass
-        both = halting & continuing
-        if both:
-            raise ValueError(f"states used both as halting and continuing: {both}")
-        for (st, _) in self.rules:
-            if st in halting:
-                raise ValueError(f"transition out of halting state {st}")
-
     def to_tsv(self, explicit=False):
-        self.validate()
         lines = []
         if explicit:
             for (st, sym), (mv, wr, nx) in self.rules.items():

@@ -1,0 +1,4 @@
+⎆	0 1	→		scan
+scan	00 01	→		scan
+scan	0  1	→	10	scan
+scan	·	⏹		✔

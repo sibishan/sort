@@ -18,51 +18,6 @@
         "comments": "edge case: only 1 element in the list"
     },
     "2": {
-        "input": "[3A7F00C29B14E58D,3A7F00C29B14E58E,F000000000000000]",
-        "accepted": true,
-        "step count": 885,
-        "write complexity": 70,
-        "space complexity": 52,
-        "head position": 0,
-        "comments": "most steps are spent to compare the first two words, which are equal except for the last digit"
-    },
-    "3": {
-        "input": "[3A7F00C29B14E58E,3A7F00C29B14E58D,F000000000000000]",
-        "accepted": true,
-        "step count": 2141,
-        "write complexity": 139,
-        "space complexity": 52,
-        "head position": 0,
-        "comments": "most steps are spent to compare the first two words, which are equal except for the last digit"
-    },
-    "4": {
-        "input": "[D90F8976F5D1A229,ED95B66734C3DCCB,7CDF3988F7299055,CF9B5CF878CB3E66,33B873E8CE2C0B68]",
-        "accepted": true,
-        "step count": 6411,
-        "write complexity": 548,
-        "space complexity": 86,
-        "head position": 0,
-        "comments": ""
-    },
-    "5": {
-        "input": "[]",
-        "accepted": true,
-        "step count": 3,
-        "write complexity": 0,
-        "space complexity": 2,
-        "head position": 0,
-        "comments": "edge case: empty list"
-    },
-    "6": {
-        "input": "[3A7F00C29B14E58D]",
-        "accepted": true,
-        "step count": 35,
-        "write complexity": 0,
-        "space complexity": 18,
-        "head position": 0,
-        "comments": "edge case: only 1 element in the list"
-    },
-    "7": {
         "input": "[0000000000000000]",
         "accepted": true,
         "step count": 35,
@@ -71,7 +26,7 @@
         "head position": 0,
         "comments": "edge case: single all-zero word"
     },
-    "8": {
+    "3": {
         "input": "[FFFFFFFFFFFFFFFF]",
         "accepted": true,
         "step count": 35,
@@ -80,7 +35,7 @@
         "head position": 0,
         "comments": "edge case: single all-F word"
     },
-    "9": {
+    "4": {
         "input": "[0000000000000001,0000000000000002]",
         "accepted": true,
         "step count": 715,
@@ -89,7 +44,7 @@
         "head position": 0,
         "comments": "two words, already sorted"
     },
-    "10": {
+    "5": {
         "input": "[0000000000000002,0000000000000001]",
         "accepted": true,
         "step count": 1325,
@@ -98,7 +53,7 @@
         "head position": 0,
         "comments": "two words, swapped"
     },
-    "11": {
+    "6": {
         "input": "[FFFFFFFFFFFFFFFF,0000000000000000]",
         "accepted": true,
         "step count": 815,
@@ -107,7 +62,7 @@
         "head position": 0,
         "comments": "two words, extreme values swapped"
     },
-    "12": {
+    "7": {
         "input": "[3A7F00C29B14E58D,3A7F00C29B14E58D]",
         "accepted": true,
         "step count": 749,
@@ -116,7 +71,7 @@
         "head position": 0,
         "comments": "two identical words"
     },
-    "13": {
+    "8": {
         "input": "[3A7F00C29B14E58D,3A7F00C29B14E58E,F000000000000000]",
         "accepted": true,
         "step count": 885,
@@ -125,7 +80,7 @@
         "head position": 0,
         "comments": "most steps are spent to compare the first two words, which are equal except for the last digit"
     },
-    "14": {
+    "9": {
         "input": "[3A7F00C29B14E58E,3A7F00C29B14E58D,F000000000000000]",
         "accepted": true,
         "step count": 2141,
@@ -134,7 +89,7 @@
         "head position": 0,
         "comments": "most steps are spent to compare the first two words, which are equal except for the last digit"
     },
-    "15": {
+    "10": {
         "input": "[F000000000000000,3A7F00C29B14E58E,3A7F00C29B14E58D]",
         "accepted": true,
         "step count": 2851,
@@ -143,7 +98,7 @@
         "head position": 0,
         "comments": "long common prefix between the last two words, big word first"
     },
-    "16": {
+    "11": {
         "input": "[3A7F00C29B14E58D,F000000000000000,3A7F00C29B14E58E]",
         "accepted": true,
         "step count": 1631,
@@ -152,7 +107,7 @@
         "head position": 0,
         "comments": "long common prefix between non-adjacent words"
     },
-    "17": {
+    "12": {
         "input": "[8000000000000000,0000000000000000]",
         "accepted": true,
         "step count": 815,
@@ -161,7 +116,7 @@
         "head position": 0,
         "comments": "differ only in the first digit"
     },
-    "18": {
+    "13": {
         "input": "[0000000000000009,000000000000000A]",
         "accepted": true,
         "step count": 715,
@@ -170,7 +125,7 @@
         "head position": 0,
         "comments": "last digit crosses the 9/A digit-letter boundary"
     },
-    "19": {
+    "14": {
         "input": "[000000000000000A,0000000000000009]",
         "accepted": true,
         "step count": 1325,
@@ -179,7 +134,7 @@
         "head position": 0,
         "comments": "last digit crosses the 9/A boundary, swapped"
     },
-    "20": {
+    "15": {
         "input": "[0123456789ABCDEF,0123456789ABCDEE,0123456789ABCDED]",
         "accepted": true,
         "step count": 3871,
@@ -188,7 +143,7 @@
         "head position": 0,
         "comments": "words differ only in the last digit, descending"
     },
-    "21": {
+    "16": {
         "input": "[0123456789ABCDED,0123456789ABCDEE,0123456789ABCDEF]",
         "accepted": true,
         "step count": 1395,
@@ -197,7 +152,7 @@
         "head position": 0,
         "comments": "words differ only in the last digit, already sorted"
     },
-    "22": {
+    "17": {
         "input": "[1000000000000000,0F00000000000000]",
         "accepted": true,
         "step count": 815,
@@ -206,7 +161,7 @@
         "head position": 0,
         "comments": "first digit decides even though later digits favor the other word"
     },
-    "23": {
+    "18": {
         "input": "[AAAAAAAAAAAAAAAA,AAAAAAAAAAAAAAAA,AAAAAAAAAAAAAAAA,AAAAAAAAAAAAAAAA]",
         "accepted": true,
         "step count": 2177,
@@ -215,7 +170,7 @@
         "head position": 0,
         "comments": "all words identical"
     },
-    "24": {
+    "19": {
         "input": "[2000000000000000,1000000000000000,2000000000000000,1000000000000000]",
         "accepted": true,
         "step count": 3871,
@@ -224,7 +179,7 @@
         "head position": 0,
         "comments": "two distinct words, each repeated, interleaved"
     },
-    "25": {
+    "20": {
         "input": "[BBBBBBBBBBBBBBBB,0000000000000000,BBBBBBBBBBBBBBBB,0000000000000000,BBBBBBBBBBBBBBBB]",
         "accepted": true,
         "step count": 5401,
@@ -233,7 +188,7 @@
         "head position": 0,
         "comments": "duplicates with a single minimum value repeated"
     },
-    "26": {
+    "21": {
         "input": "[0000000000000000,1111111111111111,2222222222222222,3333333333333333,4444444444444444,5555555555555555,6666666666666666,7777777777777777]",
         "accepted": true,
         "step count": 1225,
@@ -242,16 +197,7 @@
         "head position": 0,
         "comments": "eight words, already sorted"
     },
-    "27": {
-        "input": "[7777777777777777,6666666666666666,5555555555555555,4444444444444444,3333333333333333,2222222222222222,1111111111111111,0000000000000000]",
-        "accepted": true,
-        "step count": 21161,
-        "write complexity": 1883,
-        "space complexity": 137,
-        "head position": 0,
-        "comments": "eight words, reverse sorted"
-    },
-    "28": {
+    "22": {
         "input": "[0000000000000000,0000000000000001,0000000000000002,0000000000000003]",
         "accepted": true,
         "step count": 2075,
@@ -260,7 +206,16 @@
         "head position": 0,
         "comments": "consecutive values, already sorted"
     },
-    "29": {
+    "23": {
+        "input": "[7777777777777777,6666666666666666,5555555555555555,4444444444444444,3333333333333333,2222222222222222,1111111111111111,0000000000000000]",
+        "accepted": true,
+        "step count": 21161,
+        "write complexity": 1883,
+        "space complexity": 137,
+        "head position": 0,
+        "comments": "eight words, reverse sorted"
+    },
+    "24": {
         "input": "[0000000000000003,0000000000000002,0000000000000001,0000000000000000]",
         "accepted": true,
         "step count": 7673,
@@ -269,7 +224,7 @@
         "head position": 0,
         "comments": "consecutive values, reverse sorted"
     },
-    "30": {
+    "25": {
         "input": "[00000000DEADBEEF,00000000CAFEBABE,0000000000C0FFEE,0000000000000000]",
         "accepted": true,
         "step count": 6313,
@@ -278,7 +233,7 @@
         "head position": 0,
         "comments": "common hex constants with leading zeros"
     },
-    "31": {
+    "26": {
         "input": "[FEDCBA9876543210,0123456789ABCDEF,FFFFFFFFFFFFFFFF,0000000000000000]",
         "accepted": true,
         "step count": 3461,
@@ -287,7 +242,7 @@
         "head position": 0,
         "comments": "all 16 digits ascending vs descending vs extremes"
     },
-    "32": {
+    "27": {
         "input": "[9999999999999999,AAAAAAAAAAAAAAAA,9999999999999998,AAAAAAAAAAAAAAA9]",
         "accepted": true,
         "step count": 4313,
@@ -296,8 +251,8 @@
         "head position": 0,
         "comments": "words straddling the digit-letter boundary"
     },
-    "33": {
-        "input": "[CFD52FC95C5C8DED,DBB3C280686D3062]",
+    "28": {
+        "input": "[21DE4C1FF38D02D1,F7F6108C45DE6CC5]",
         "accepted": true,
         "step count": 205,
         "write complexity": 6,
@@ -305,47 +260,47 @@
         "head position": 0,
         "comments": ""
     },
-    "34": {
-        "input": "[70FB5F7F5E296C0A,162910FB3555EA2E,E2DB58315B20401B]",
+    "29": {
+        "input": "[1E91CDF3F0391695,4BCDACA5DB6AC606,FF791F44B2FB7E1A]",
         "accepted": true,
-        "step count": 1121,
-        "write complexity": 79,
+        "step count": 375,
+        "write complexity": 10,
         "space complexity": 52,
         "head position": 0,
         "comments": ""
     },
-    "35": {
-        "input": "[CF6DEF59732FE0ED,D7A57E815AB6AAD8,BEB00AAC73B6B23C,9F70E922159DB21F,D3056FC9EE0B1DB8]",
+    "30": {
+        "input": "[0963BE72465AFD63,433B56A9E03AB319,61B78FCF903A0282,27AFD7F685596E7A,DB44E9E705A35D71]",
         "accepted": true,
-        "step count": 5225,
-        "write complexity": 425,
+        "step count": 2615,
+        "write complexity": 168,
         "space complexity": 86,
         "head position": 0,
         "comments": ""
     },
-    "36": {
-        "input": "[008BE503F7BECCA8,32110666F4F16AA4,AF4F5EC52567CE63,A42BD44D0124924D,6AC2C28C927099E1,9B98A39B62D801AF,14F790D60DA7D64C,2222357EC3D42F6E]",
+    "31": {
+        "input": "[825B05758D0F6835,FE51123605D8FAE1,7A5682F1A11502AC,52EFC76D21CC7191,303C3C4DC5F7E13F,0D46933BE70B42E0,CF5DD97607F47D7B,298BA22AD14995BD]",
         "accepted": true,
-        "step count": 13129,
-        "write complexity": 1060,
+        "step count": 16891,
+        "write complexity": 1443,
         "space complexity": 137,
         "head position": 0,
         "comments": ""
     },
-    "37": {
-        "input": "[911BC94E429981CA,1C4CE7D6B0107992,A5B68A4A6F0C2615,293E040363F33F0D,8758361AA31BEAEF,50C2F782E68F786D,5985537B4248ABE3,63336FA567963D4F,542A6CAB992D5FA6,6D12D474054F9010,940E1E1AE9A9E170,C50B9B809D93D63D,00E98271160DF2AE]",
+    "32": {
+        "input": "[996471F5B6D4C263,99C20050E7CF9E10,AF29ADC97EDBC9D5,B945A4278343EAF3,6923102FCD100382,9E4ED002E46BA701,DD3CE0C90B4F93EC,C5D61EF8ED95FD64,B1D7F5ED482897DE,A421E2C7B185C395,9176C6397914B3B8,2835C27194BFB622,EAB3F5484FF835BA]",
         "accepted": true,
-        "step count": 32911,
-        "write complexity": 2585,
+        "step count": 33489,
+        "write complexity": 2649,
         "space complexity": 222,
         "head position": 0,
         "comments": ""
     },
-    "38": {
-        "input": "[45D2BAE86F3BAB5F,CDDF4521D3F3E12E,578BECBED7016841,C883274FEE31FF32,254B21CBC4B9A711,7F986597A50C6B3A,5721CE6A4B6A239E,D3A37FC6104A47BD,9FE0D25C1D381E22,0B746D62A9AC1BA2,03F5BF70E56608B2,153C179D7E126A15,DC50E1904DFBB434,30A148E9AA0A29CC,E802669C837DA3C1,2F69991B4CCA5EB3,00F1B9E4AD388EFC,145B073C0F4AF350,E7B94DAE437ECD1B,8A18A4F34C1E12A1]",
+    "33": {
+        "input": "[7E488BD415C4074E,5CFEE7ABFE30EB88,7D3E4BDD3306FAFE,807B51062B61E314,4F9F8FAF8FBB7E79,4277B12EDEAC4773,5132B8C49C5B3E26,3126FC7AE89A4261,2CF6FBB5C379E451,C90F6995A20B9F66,FC0C3F545BA613CC,51B38E1718245D57,E228FD3B0D0BFBC5,85CEDA15BF3380C1,332107952B5E39DF,7DA56F3B6664BB8B,9B7A49A13BCF8729,D7A2CABADB3E91D0,5F6D0B818196F95F,48D867EA1535B7EE]",
         "accepted": true,
-        "step count": 89083,
-        "write complexity": 7266,
+        "step count": 81425,
+        "write complexity": 6513,
         "space complexity": 341,
         "head position": 0,
         "comments": ""

@@ -24,8 +24,6 @@ RIGHT = "\u2192"   # →
 LEFT = "\u2190"    # ←
 HALT = "\u23f9"    # ⏹
 
-LDELIM = ["[", ",", ":"]   # symbols that can sit just left of a word's first digit
-
 """
 STATES
 ⎆ (INIT): starts at cell 0 and steps into the list
@@ -78,7 +76,7 @@ m.add("cmp_back_R", H + MK, LEFT, "cmp_back_R")
 m.add("cmp_back_R", ";", LEFT, "cmp_back_L")
 # in the left word: skip unmarked digits, stop at the last mark (or the delimiter)
 m.add("cmp_back_L", H, LEFT, "cmp_back_L")
-m.add("cmp_back_L", MK + LDELIM, RIGHT, "cmp_find")
+m.add("cmp_back_L", MK + ["[", ",", ":"], RIGHT, "cmp_find")
 # first unmarked digit of the left word
 m.add("cmp_find", ";", RIGHT, "clrR_IN")
 for d in H:
@@ -105,14 +103,14 @@ m.add("start_swap_R", ";", LEFT, "start_swap_L")
 for a in H:
     m.add("start_swap_L", a, LEFT, "start_swap_L", write=MARK[a]) 
 m.add("start_swap_L", MK , LEFT, "start_swap_L") 
-m.add("start_swap_L", LDELIM, RIGHT, "swap_middle")  
+m.add("start_swap_L", ["[", ",", ":"], RIGHT, "swap_middle")  
 # return the cursor to the middle of the pair to swap, and unmark the left word.
 m.add("swap_middle", MK, RIGHT, "swap_middle")
 m.add("swap_middle", ";", LEFT, "find_swap")
 
 # find_swap: Now we are at the left side of the pair to swap. We will swap the two marked words.
 # Because of how find_swap is defined, find_swap only ever sees a marked cell.
-m.add("find_swap", LDELIM, RIGHT, "swap_done")  # if we reach the left delimiter, we are done swapping
+m.add("find_swap", ["[", ",", ":"], RIGHT, "swap_done")  # if we reach the left delimiter, we are done swapping
 for a in MK:
     m.add("find_swap", a, RIGHT, f"carry_swap_L_{a}")
     m.add(f"carry_swap_L_{a}", H + MK, RIGHT, f"carry_swap_L_{a}")
@@ -139,7 +137,7 @@ m.add("clrR_IN", [",", "]", "|"], LEFT, "clrL_IN")
 m.add("clrL_IN", H + [";"], LEFT, "clrL_IN")
 for c in MK:
     m.add("clrL_IN", c, LEFT, "clrL_IN", write=UNMARK[c])
-m.add("clrL_IN", LDELIM, RIGHT, "tocur_IN")
+m.add("clrL_IN", ["[", ",", ":"], RIGHT, "tocur_IN")
  
 # walk back to ';', restore the comma, move the cursor to the next pair
 m.add("tocur_IN", H, RIGHT, "tocur_IN")
