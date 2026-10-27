@@ -252,7 +252,7 @@
         "comments": "words straddling the digit-letter boundary"
     },
     "28": {
-        "input": "[21DE4C1FF38D02D1,F7F6108C45DE6CC5]",
+        "input": "[B177DBFB3AE978CE,E4C8466C2206FCBF]",
         "accepted": true,
         "step count": 205,
         "write complexity": 6,
@@ -261,46 +261,46 @@
         "comments": ""
     },
     "29": {
-        "input": "[1E91CDF3F0391695,4BCDACA5DB6AC606,FF791F44B2FB7E1A]",
+        "input": "[E2F146CC3C476828,8B8B77BFB89D3994,8C1CA34FDA0788EB]",
         "accepted": true,
-        "step count": 375,
-        "write complexity": 10,
+        "step count": 1765,
+        "write complexity": 145,
         "space complexity": 52,
         "head position": 0,
         "comments": ""
     },
     "30": {
-        "input": "[0963BE72465AFD63,433B56A9E03AB319,61B78FCF903A0282,27AFD7F685596E7A,DB44E9E705A35D71]",
+        "input": "[B42866E7513CD2E2,F04003ADD1FC2054,8E4B922A6A2F3892,CC64919285CB65CE,2213644DCDD03723]",
         "accepted": true,
-        "step count": 2615,
-        "write complexity": 168,
+        "step count": 5801,
+        "write complexity": 485,
         "space complexity": 86,
         "head position": 0,
         "comments": ""
     },
     "31": {
-        "input": "[825B05758D0F6835,FE51123605D8FAE1,7A5682F1A11502AC,52EFC76D21CC7191,303C3C4DC5F7E13F,0D46933BE70B42E0,CF5DD97607F47D7B,298BA22AD14995BD]",
+        "input": "[4785E9050C151B55,1714711B4C6C0692,4D20B8D72BA61487,E958A11D5E0A8324,46DB548DCD772270,F6A5D3890FDA29AB,2B84C51A1266520C,0F0A23D45C083F8F]",
         "accepted": true,
-        "step count": 16891,
-        "write complexity": 1443,
+        "step count": 14045,
+        "write complexity": 1143,
         "space complexity": 137,
         "head position": 0,
         "comments": ""
     },
     "32": {
-        "input": "[996471F5B6D4C263,99C20050E7CF9E10,AF29ADC97EDBC9D5,B945A4278343EAF3,6923102FCD100382,9E4ED002E46BA701,DD3CE0C90B4F93EC,C5D61EF8ED95FD64,B1D7F5ED482897DE,A421E2C7B185C395,9176C6397914B3B8,2835C27194BFB622,EAB3F5484FF835BA]",
+        "input": "[4C88ADE1DCCCD1C4,8846A1D106E9163C,CB395F3AD5755FD3,13AFB284864D0E0E,24D92658BE2FA76C,E55830B121768CCD,768CA96A70E16378,111486AFFE9AE004,C47EAFFB061B22D8,1ED0FFB182EE29DF,1FEFD8757DDB75ED,9E7506712C0D5666,304270516F18DD8F]",
         "accepted": true,
-        "step count": 33489,
-        "write complexity": 2649,
+        "step count": 35481,
+        "write complexity": 2939,
         "space complexity": 222,
         "head position": 0,
         "comments": ""
     },
     "33": {
-        "input": "[7E488BD415C4074E,5CFEE7ABFE30EB88,7D3E4BDD3306FAFE,807B51062B61E314,4F9F8FAF8FBB7E79,4277B12EDEAC4773,5132B8C49C5B3E26,3126FC7AE89A4261,2CF6FBB5C379E451,C90F6995A20B9F66,FC0C3F545BA613CC,51B38E1718245D57,E228FD3B0D0BFBC5,85CEDA15BF3380C1,332107952B5E39DF,7DA56F3B6664BB8B,9B7A49A13BCF8729,D7A2CABADB3E91D0,5F6D0B818196F95F,48D867EA1535B7EE]",
+        "input": "[FA836B2882F00EA3,035D751E6C115335,60FF9240FD55CF79,512A325C65F3CF1B,F4FF13F75C089B4E,37002E47F77DAA83,6583DBC463E0A6C9,18B495E8D554DA37,17D8D3954BAD9B11,A4397098D09E21E1,D579D023333B3C76,D857C50F43521744,467C0608977BE006,402E06C1DD6F6F5E,D861E10B7E1FF61B,8B83546F64B41BC3,E0AF67AEED8AB644,85C63177AD96588F,46E200FAD2E6FA7A,E1DA8494531BD784]",
         "accepted": true,
-        "step count": 81425,
-        "write complexity": 6513,
+        "step count": 73113,
+        "write complexity": 5809,
         "space complexity": 341,
         "head position": 0,
         "comments": ""
