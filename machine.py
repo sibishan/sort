@@ -20,8 +20,6 @@ RIGHT = "\u2192"   # →
 LEFT = "\u2190"    # ←
 HALT = "\u23f9"    # ⏹
 
-LDELIM = ["[", ","]   # symbols that can sit just left of a word's first digit
-
 class Machine:
     def __init__(self):
         self.rules = {}   # (state, symbol) -> (move, write_or_None, next_state)
