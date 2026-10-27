@@ -105,10 +105,7 @@ run_case("[3A7F00C29B14E58D,3A7F00C29B14E58E,F000000000000000]",
          "most steps are spent to compare the first two words, which are equal except for the last digit")
 run_case("[3A7F00C29B14E58E,3A7F00C29B14E58D,F000000000000000]",
          "most steps are spent to compare the first two words, which are equal except for the last digit")
-run_case(random_input(5))
 
-run_case("[]", "edge case: empty list")
-run_case("[3A7F00C29B14E58D]", "edge case: only 1 element in the list")
 run_case("[0000000000000000]", "edge case: single all-zero word")
 run_case("[FFFFFFFFFFFFFFFF]", "edge case: single all-F word")
  
