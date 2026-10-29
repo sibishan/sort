@@ -7,13 +7,31 @@ Group Members:
 - Tuan Duy Nguyen (26099578)
 
 
+## File Structure
+
+```text
+.
+├── sort.py        # generates sort.tsv
+├── machine.py     # machine definition used by sort.py
+├── sort.tsv       # generated Turing Machine
+├── test.py        # test cases, runs them on sim/
+├── test.json      # results from test.py
+├── verify.py      # reruns test.json cases on verify/
+├── sim/           # local TM simulator (from Ed Resources), used before the canonical one was published
+├── verify/        # canonical TM simulator (from Ed Resources)
+└── assets/        # diagrams
+```
+
+- `sim/`: [Local TM Simulator](https://edstem.org/au/courses/38542/resources?download=25194)
+- `verify/`: [Canonical TM Simulator](https://edstem.org/au/courses/38542/resources?download=25232)
+
 ## State Transition Diagram
 
 The generalised state transition diagram for the sorting Turing Machine is shown below.
 
 ![Generalised State Transition Diagram](assets/sort_machine_diagram.png)
 
-## Usage
+## Contribution Guide to Members
 
 ### 1. Generate the TSV file
 
@@ -44,7 +62,7 @@ Each element must:
 
 ### 3. Run the tests
 
-Run `test.py` from the project root (or use your editor's Run button):
+Run `test.py` from the project root:
 
 ```bash
 python3 test.py
@@ -52,15 +70,11 @@ python3 test.py
 
 Each test case runs on the bundled simulator in `sim/`, reading `sort.tsv`. Re-run `sort.py` first if the machine has changed.
 
-For each case, the output shows PASS if the machine accepted the input and the final tape holds the sorted list, and FAIL otherwise:
-
-```text
-PASS #2: accepted, 885 steps, 70 writes, 52 cells, head 0
-```
+For each case, the output shows PASS if the machine accepted the input and the final tape holds the sorted list, and FAIL otherwise.
 
 ### 4. Results
 
-`test.json` is rebuilt on every run from the `run_case` calls, numbered in the order they appear in `test.py`:
+`test.json` is rebuilt on every run from the `run_case` calls, numbered in the order they appear in `test.py`. For example,
 
 ```json
 "2": {
@@ -74,7 +88,18 @@ PASS #2: accepted, 885 steps, 70 writes, 52 cells, head 0
 },
 ```
 
+- **step count**: the number of transitions the machine took before halting.
 - **write complexity**: the number of steps that changed a cell's symbol.
 - **space complexity**: the number of tape cells used (the input length, or more if the head moves past the end of the input).
 
-The simulator does not report these two values, so `test.py` counts them while stepping through the machine. They match the values shown by the [Ed Turing Machine Simulator](https://edstem.org/au/courses/38542/lessons/118243/slides/836183), which can still be used to step through a run visually.
+The simulator does not report write and space complexity, so `test.py` counts them while stepping through the machine. They match the values shown by the [Ed Turing Machine Simulator](https://edstem.org/au/courses/38542/lessons/118243/slides/836183), which can still be used to step through a run visually.
+
+For any input that follows the valid grammar, every test is expected to end with `accepted` as `true` and `head position` at `0`.
+
+### 5. Verify
+
+Run `verify.py` to recheck `sort.tsv` and every case in `test.json` on the canonical simulator in `verify/`:
+
+```bash
+python3 verify.py
+```
